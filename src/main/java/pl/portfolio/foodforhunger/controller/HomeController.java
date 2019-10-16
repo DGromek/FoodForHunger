@@ -9,12 +9,16 @@ public class HomeController {
 
     @RequestMapping("/home")
     String home() {
-        return "home";
+        return "home/home";
     }
 
     @GetMapping("/login")
     String login() {
-        return "login";
+        return "home/login";
     }
 
+    @GetMapping("/register")
+    String register() {
+        return "home/register";
+    }
 }
