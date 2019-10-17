@@ -45,49 +45,46 @@
                 <div class="tab-pane fade show active" id="dishes" role="tabpanel" aria-labelledby="home-tab">
                     <div class="card-deck">
 
-                        <div class="card my-4 p-3 border shadow bg-light">
-                            <img class="card-img-top img-fluid" src="https://placehold.it/100x45">
-                            <div class="card-body">
-                                <h5>Sample name</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.<br>
-                                </p>
+                        <c:forEach items="${dishPage.iterator()}" var="dish">
+                            <div class="card my-4 p-3 border shadow bg-light">
+                                <img class="card-img-top img-fluid" src="https://placehold.it/100x45">
+                                <div class="card-body">
+                                    <h5>${dish.name}</h5>
+                                    <p class="card-text">
+                                        ${dish.description}
+                                    </p>
 
+                                </div>
+                                <div class="card-footer border-0 text-right bg-light">
+                                    <form action="/dish/details/${dish.id}">
+                                        <button type="submit" class="btn btn-outline-info btn-sm">Szczegóły</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="card-footer border-0 text-right bg-light">
-                                <button class="btn btn-outline-info btn-sm">Szczegóły</button>
-                            </div>
-                        </div>
-
-                        <div class="card my-4 p-3 border shadow bg-light">
-                            <img class="card-img-top img-fluid" src="https://placehold.it/100x45">
-                            <div class="card-body">
-                                <h5>Sample name</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.<br>
-                                </p>
-                            </div>
-                            <div class="card-footer border-0 text-right bg-light">
-                                <button class="btn btn-outline-info btn-sm">Szczegóły</button>
-                            </div>
-                        </div>
-
+                        </c:forEach>
                     </div>
 
-                    <!-- Dishes paggination -->
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
-                            <li class="page-item"><a class="page-link">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link">1</a></li>
-                            <li class="page-item active"><a class="page-link">2</a></li>
-                            <li class="page-item"><a class="page-link">3</a></li>
-                            <li class="page-item"><a class="page-link">&raquo;</a></li>
+                            <c:if test="${dishPage.number eq 1}">
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
+                                        class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
+                                        class="page-link">${dishPage.number}</a></li>
+                            </c:if>
+
+                            <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
+
+                            <c:if test="${dishPagePage.number < dishPage.totalPages - 1}">
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
+                                        class="page-link">${dishPage.number + 2}</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
+                                        class="page-link">&raquo;</a></li>
+                            </c:if>
                         </ul>
                     </nav>
 
@@ -105,7 +102,7 @@
                             <div class="card-header">
                                 <img src="/user/getImage/${comment.author.id}" class="img-fluid rounded-circle pr-1"
                                      id="avatar-thumbnail">
-                                <a href="/user/profile/${comment.author.id}">${comment.author.login}</a>
+                                <a href="/user/profile/${comment.author.id}/0/0">${comment.author.login}</a>
                             </div>
                             <div class="card-body">
                                 <div class="card-text">
@@ -124,15 +121,23 @@
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
                             <c:if test="${commentPage.number eq 1}">
-                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}" class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}" class="page-link">${commentPage.number}</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}"
+                                        class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}"
+                                        class="page-link">${commentPage.number}</a></li>
                             </c:if>
 
                             <li class="page-item active"><a class="page-link">${commentPage.number + 1}</a></li>
 
                             <c:if test="${commentPage.number < commentPage.totalPages - 1}">
-                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}" class="page-link">${commentPage.number + 2}</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}" class="page-link">&raquo;</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}"
+                                        class="page-link">${commentPage.number + 2}</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}"
+                                        class="page-link">&raquo;</a></li>
                             </c:if>
                         </ul>
                     </nav>

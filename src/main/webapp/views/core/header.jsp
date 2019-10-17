@@ -39,6 +39,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbar">
+        <c:choose>
+            <c:when test="${empty loggedUser}">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/login">Zaloguj się</a>
@@ -47,6 +49,27 @@
                 <a class="nav-link" href="/register">Zarejestruj się</a>
             </li>
         </ul>
+            </c:when>
+            <c:otherwise>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dish/search">Wyszukaj danie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Wystaw danie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/profile/${loggedUser.id}/0/0">Twoje konto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Wyloguj</a>
+                    </li>
+                    <li class="nav-item">
+                        Witaj ${loggedUser.login}!
+                    </li>
+                </ul>
+            </c:otherwise>
+        </c:choose>
     </div>
 </nav>
 

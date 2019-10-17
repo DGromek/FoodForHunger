@@ -13,6 +13,7 @@ import pl.portfolio.foodforhunger.service.DishService;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/dish")
@@ -30,6 +31,13 @@ public class DishController {
         Dish dish = dishService.getOne(id);
         model.addAttribute("dish", dish);
         return "dish/details";
+    }
+
+    @RequestMapping("/browser")
+    public String browser(Model model) {
+        List<Dish> dishes = dishService.findAll();
+        model.addAttribute("dishes", dishes);
+        return "dish/browser";
     }
 
     //Method to get image of dish from DB

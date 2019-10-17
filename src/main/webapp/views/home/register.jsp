@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: A754379
@@ -19,20 +20,33 @@
     <div class="row">
         <div class="col-md-4 align-self-center mt-5 mb-auto mx-auto p-5 shadow rounded box-size bg-page">
             <h5 class="pb-2">Zarejestruj się</h5>
-            <form>
+            <div class="alert alert-danger">
+
+            </div>
+            <form:form action="/register" method="post" modelAttribute="user">
+                <form:hidden path="id"/>
 
                 <!-- Inputs -->
                 <div class="form-group">
                     <label>Podaj login</label>
-                    <input class="form-control">
+                    <form:input class="form-control" path="login"/>
+                    <div>
+                        <form:errors class="alert alert-danger" role="alert" path="login"/>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Podaj email</label>
-                    <input class="form-control" type="email">
+                    <form:input class="form-control" type="email" path="email"/>
+                    <div>
+                    <form:errors class="alert alert-danger" role="alert" path="email"/>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Podaj hasło</label>
-                    <input class="form-control" type="password">
+                    <form:input class="form-control" type="password" path="password"/>
+                    <div>
+                    <form:errors class="alert alert-danger" role="alert" path="password"/>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Powtórz hasło</label>
@@ -48,9 +62,9 @@
                 </div>
 
                 <!-- Submit button -->
-                <button class="btn btn-primary btn-lg mt-4 px-4">Wyślij</button>
+                <form:button class="btn btn-primary btn-lg mt-4 px-4" type="submit">Wyślij</form:button>
 
-            </form>
+            </form:form>
         </div>
     </div>
 </div>

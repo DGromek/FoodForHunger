@@ -42,6 +42,12 @@ body, html {
     object-fit: cover;
 }
 
+#dish-thumbnail {
+    width: 475px;
+    height: 215px;
+    object-fit: cover;
+}
+
 #user-avatar {
     width: 150px;
     height: 150px;
