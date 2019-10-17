@@ -1,6 +1,8 @@
 package pl.portfolio.foodforhunger.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import pl.portfolio.foodforhunger.entity.Comment;
 import pl.portfolio.foodforhunger.entity.User;
@@ -34,6 +36,11 @@ public class CommentService {
 
     public void delete(Comment comment) {
         commentRepository.delete(comment);
+    }
+
+    //Pagination
+    public Page<Comment> getPageOfResults(int id, int size) {
+        return commentRepository.findAll(PageRequest.of(id, size));
     }
 
     public boolean isAuthor(Comment commentToDelete, User loggedUser) {

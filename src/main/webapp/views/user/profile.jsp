@@ -95,76 +95,45 @@
 
                 <!-- Comments section -->
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
+                    <c:forEach items="${commentPage.iterator()}" var="comment" varStatus="iteration">
 
-                    <div class="card-deck">
+                        <c:if test="${(iteration.count eq 1) || (iteration.count eq 3)}">
+                            <div class="card-deck">
+                        </c:if>
+
                         <div class="card my-4 border shadow bg-light rounded">
                             <div class="card-header">
-                                <img src="https://via.placeholder.com/40" class="img-fluid rounded-circle pr-1">
-                                <a href="">Autor komentarza</a>
+                                <img src="/user/getImage/${comment.author.id}" class="img-fluid rounded-circle pr-1"
+                                     id="avatar-thumbnail">
+                                <a href="/user/profile/${comment.author.id}">${comment.author.login}</a>
                             </div>
                             <div class="card-body">
                                 <div class="card-text">
-                                    <p>Corned beef short loin meatloaf jerky, sirloin leberkas pork loin boudin pork
-                                        belly venison turducken flank prosciutto. Frankfurter cupim salami pig
-                                        landjaeger. Fatback drumstick brisket hamburger.</p>
+                                    <p>${comment.content}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card my-4 border shadow bg-light rounded">
-                            <div class="card-header">
-                                <img src="https://via.placeholder.com/40" class="img-fluid rounded-circle pr-1">
-                                <a href="">Autor komentarza</a>
+                        <c:if test="${(iteration.count eq 2) || (iteration.count eq 4)}">
                             </div>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <p>Sausage strip steak chuck spare ribs shoulder, corned beef cupim porchetta
-                                        kielbasa brisket pastrami turkey</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </c:if>
+                    </c:forEach>
 
-                    <div class="card-deck">
-                        <div class="card my-4 border shadow bg-light rounded">
-                            <div class="card-header">
-                                <img src="https://via.placeholder.com/40" class="img-fluid rounded-circle pr-1">
-                                <a href="">Autor komentarza</a>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <p>Drumstick frankfurter cupim, sirloin strip steak boudin filet mignon ham
-                                        porchetta tenderloin short ribs beef burgdoggen prosciutto meatball. Cow pork
-                                        chop ham salami prosciutto shankle tail ground round meatloaf. Pork loin filet
-                                        mignon kevin, doner shank biltong strip steak.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card my-4 border shadow bg-light rounded">
-                            <div class="card-header">
-                                <img src="https://via.placeholder.com/40" class="img-fluid rounded-circle pr-1">
-                                <a href="">Autor komentarza</a>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <p>Pig short loin venison ham. Beef ribs ham hock brisket kielbasa chuck tongue
-                                        frankfurter. Ham hock picanha hamburger flank. Pork chop kielbasa ham hock, pork
-                                        belly tongue corned beef pork loin drumstick fatback sirloin shankle cow short
-                                        ribs.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Comments paggination -->
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
-                            <li class="page-item"><a class="page-link">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link">1</a></li>
-                            <li class="page-item active"><a class="page-link">2</a></li>
-                            <li class="page-item"><a class="page-link">3</a></li>
-                            <li class="page-item"><a class="page-link">&raquo;</a></li>
+                            <c:if test="${commentPage.number eq 1}">
+                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}" class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}" class="page-link">${commentPage.number}</a></li>
+                            </c:if>
+
+                            <li class="page-item active"><a class="page-link">${commentPage.number + 1}</a></li>
+
+                            <c:if test="${commentPage.number < commentPage.totalPages - 1}">
+                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}" class="page-link">${commentPage.number + 2}</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}" class="page-link">&raquo;</a></li>
+                            </c:if>
                         </ul>
                     </nav>
 

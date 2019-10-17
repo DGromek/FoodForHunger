@@ -1,6 +1,8 @@
 package pl.portfolio.foodforhunger.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import pl.portfolio.foodforhunger.entity.Dish;
 import pl.portfolio.foodforhunger.entity.User;
@@ -38,6 +40,11 @@ public class DishService {
 
     public void delete(Dish dish) {
         dishRepository.delete(dish);
+    }
+
+    //Pagination
+    public Page<Dish> getPageOfResults(int id, int size) {
+        return dishRepository.findAll(PageRequest.of(id, size));
     }
 
     public boolean isOwner(Dish dish, User loggedUser) {

@@ -1,6 +1,7 @@
 package pl.portfolio.foodforhunger.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -34,15 +36,16 @@ public class UserController {
         this.commentService = commentService;
     }
 
-    @GetMapping("/profile/{id}")
-    public String profile(@PathVariable Long id, Model model) {
+    @GetMapping("/profile/{id}/{dishPageIdx}/{commentPageIdx}")
+    public String profile(@PathVariable Long id, @PathVariable int dishPageIdx, @PathVariable int commentPageIdx, Model model) {
         User user = userService.getOne(id);
-        List<Dish> userDishes = dishService.findAllByUserId(id);
-        List<Comment> commentsAboutUser = commentService.findAllByReceiverId(id);
 
-        model.addAttribute("commentsAboutUser", commentsAboutUser);
-        model.addAttribute("userDishes", userDishes);
+        Page<Dish> dishPage = dishService.getPageOfResults(dishPageIdx, 2);
+        Page<Comment> commentPage = commentService.getPageOfResults(commentPageIdx, 4);
+
         model.addAttribute("user", user);
+        model.addAttribute("dishPage", dishPage);
+        model.addAttribute("commentPage", commentPage);
         return "/user/profile";
     }
 
