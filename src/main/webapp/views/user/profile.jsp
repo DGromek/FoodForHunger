@@ -1,23 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: A754379
-  Date: 10/16/2019
-  Time: 12:43 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title></title>
 </head>
-<body>
 
+<body>
 <%@ include file="../core/header.jsp" %>
 
 <div class="container p-4 my-4 bg-page shadow rounded">
     <div class="row">
         <div class="col-4 col-md-3 col-lg-2 px-2">
-            <img src="${user.avatar}" width="150" height="150" class="img-fluid">
+            <img src="/user/getImage/${user.id}" id="user-avatar" class="img-fluid">
         </div>
 
         <!-- Header -->

@@ -18,7 +18,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User findOne(Long id) {
+    public User getOne(Long id) {
         return userRepository.getOne(id);
     }
 

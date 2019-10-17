@@ -34,24 +34,19 @@ body, html {
     background-color: rgb(230, 240, 255);
 }
 
-/* Profile */
+/* Page images sizes */
 
-.half-hr {
-    width: 70%;
-    margin-top: -9px;
+#dish-img {
+    width: 1900px;
+    height: 450px;
+    object-fit: cover;
 }
 
-/* Profile boxes sizes */
-
-.profile-comment-height {
-    height: 226px;
+#user-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
-
-.profile-dish-height {
-    height: 351px;
-}
-
-
 /* Social media icons styles */
 
 .fa {

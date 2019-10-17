@@ -24,7 +24,7 @@ public class DishService {
         return dishRepository.findAllByUserId(id);
     }
 
-    public Dish findOne(Long id) {
+    public Dish getOne(Long id) {
         return dishRepository.getOne(id);
     }
 

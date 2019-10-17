@@ -13,6 +13,10 @@ import pl.portfolio.foodforhunger.service.CommentService;
 import pl.portfolio.foodforhunger.service.DishService;
 import pl.portfolio.foodforhunger.service.UserService;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -32,7 +36,7 @@ public class UserController {
 
     @GetMapping("/profile/{id}")
     public String profile(@PathVariable Long id, Model model) {
-        User user = userService.findOne(id);
+        User user = userService.getOne(id);
         List<Dish> userDishes = dishService.findAllByUserId(id);
         List<Comment> commentsAboutUser = commentService.findAllByReceiverId(id);
 
@@ -42,4 +46,18 @@ public class UserController {
         return "/user/profile";
     }
 
+    //Method to get avatar from DB
+    @GetMapping("/getImage/{id}")
+    public void getImage(@PathVariable long id, HttpServletResponse response) throws IOException {
+        User user = userService.getOne(id);
+        byte[] avatar = user.getAvatar();
+
+        //If user doesn't have avatar insert placeholder.
+        if (avatar == null) {
+            FileInputStream fileInputStream = new FileInputStream("src/main/resources/static/placeholders/placeholder.png");
+            avatar = fileInputStream.readAllBytes();
+        }
+
+        response.getOutputStream().write(avatar);
+    }
 }

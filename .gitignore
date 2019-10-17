@@ -125,3 +125,4 @@ mvnw
 HELP.md
 .mvn/wrapper/MavenWrapperDownloader.java
 .mvn/wrapper/maven-wrapper.properties
+target/classes/META-INF/FoodForHunger.kotlin_module

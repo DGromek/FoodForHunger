@@ -27,7 +27,7 @@ public class UserFixture {
         user1.setEmail("SampleMail@sample.net");
         user1.setPassword("1234567");
 
-        fileInputStream = new FileInputStream("C:\\Users\\A754379\\Desktop\\FoodForHunger\\src\\main\\resources\\static\\placeholders\\profile-pic.png");
+        fileInputStream = new FileInputStream("src/main/resources/static/placeholders/profile-pic.png");
 
         user1.setAvatar(fileInputStream.readAllBytes());
         user1.setDescription("Lubię gotować i lubię dobrze zjeść. Chcesz się wymienić? Pisz lub dzwoń! Email: kuchcik@gotowanie.pl Telefon: 133 714 213");
@@ -40,7 +40,7 @@ public class UserFixture {
         user2.setEmail("SŁacuch@sample.net");
         user2.setPassword("1234567");
 
-        fileInputStream = new FileInputStream("C:\\Users\\A754379\\Desktop\\FoodForHunger\\src\\main\\resources\\static\\placeholders\\profile-pic-2.jpg");
+        fileInputStream = new FileInputStream("src/main/resources/static/placeholders/profile-pic-2.jpg");
 
         user2.setAvatar(fileInputStream.readAllBytes());
         user2.setDescription("Najlepsze jedzenie w całej wiosce smerfów! Chcesz poznać najsmerfniejsze smaki na świecie? Napisz: lasuch@smerf.mem");
