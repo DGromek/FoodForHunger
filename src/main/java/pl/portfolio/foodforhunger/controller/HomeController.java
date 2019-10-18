@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.repository.UserRepository;
-import pl.portfolio.foodforhunger.service.LoginService;
+import pl.portfolio.foodforhunger.entity.UserDTO;
+import pl.portfolio.foodforhunger.service.UserService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,13 +18,11 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
 
-    private UserRepository userRepository;
-    private LoginService loginService;
+    private UserService userService;
 
     @Autowired
-    public HomeController(UserRepository userRepository, LoginService loginService) {
-        this.userRepository = userRepository;
-        this.loginService = loginService;
+    public HomeController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping("/home")
@@ -38,30 +36,33 @@ public class HomeController {
     }
 
     @PostMapping("/login")
-    public String login(HttpSession session, @RequestParam("login") String login, @RequestParam("password") String password) {
-        User user = loginService.userAutentication(login, password);
+    public String login(Model model, HttpSession session, @RequestParam("login") String login, @RequestParam("password") String password) {
+        User user = userService.userAuthentication(login, password);
 
         if (user != null) {
             session.setAttribute("loggedUser", user);
-            session.removeAttribute("err");
             return "redirect:/home";
         }
-        session.setAttribute("err", "err");
-        return "/login";
+        model.addAttribute("err", true);
+        return "home/login";
     }
 
     @GetMapping("/register")
     String register(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("userToRegister", new UserDTO());
         return "home/register";
     }
 
     @PostMapping("/register")
-    public String add(@Valid User user, BindingResult errors) {
-        if (errors.hasErrors()) {
+    public String register(@Valid UserDTO userToRegister, BindingResult errors) {
+
+        if (!userService.isRegistrationSuccessful(userToRegister, errors)) {
             return "home/register";
         }
-        userRepository.save(user);
+
+        User user = new User(userToRegister);
+        user.encodePassword();
+        userService.save(user);
         return "redirect:/home";
     }
 

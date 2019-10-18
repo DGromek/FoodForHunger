@@ -24,13 +24,13 @@
                 </p>
             </div>
             <div class="col-6 col-lg-2">
-                <h6>We don't have!</h6>
+                <h6><strong>We don't have!</strong></h6>
                 <a class="fa fa-facebook-square"></a> Facebook<br>
                 <a class="fa fa-twitter-square"></a> Twitter<br>
                 <a class="fa fa-instagram"></a> Instagram<br>
             </div>
             <div class="col-6 col-lg-2">
-                <h6>But we have!</h6>
+                <h6><strong>But we have!</strong></h6>
                 <a class="fa fa-envelope-square"></a> <a class="text-dark"
                                                          href="mailto:dawidgromek.1997@gmail.com">Mail</a><br>
                 <a class="fa fa-github-square"></a> <a class="text-dark" href="https://github.com/DGromek"

@@ -1,7 +1,5 @@
 package pl.portfolio.foodforhunger.entity;
 
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -15,24 +13,27 @@ import static org.mindrot.jbcrypt.BCrypt.hashpw;
 @Table(name = "user")
 public class User {
 
+    static final int PASSWORD_MINIMUM_LENGTH = 8;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
-    @Size(min = 5, max = 15)
+    @NotEmpty(message = "Login nie może być pusty.")
+    @Size(min = 5, max = 15, message = "Login musi mieć długość między 5 a 15 znaków.")
     @Column(unique=true)
     private String login;
 
     @Column(columnDefinition = "BLOB")
     private byte[] avatar;
 
-    @NotEmpty
+    @NotEmpty(message = "Email nie może być pusty.")
     @Email
     @Column(unique=true)
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "Hasło nie może być puste.")
+    @Size(min = PASSWORD_MINIMUM_LENGTH, message = "Hasło musi mieć minimum 8 znaków")
     private String password;
 
     @Column(columnDefinition = "text")
@@ -49,6 +50,12 @@ public class User {
     private List<Dish> dishes = new ArrayList<>();
 
     public User() {
+    }
+
+    public User(UserDTO validatedUser) {
+        this.login = validatedUser.getLogin();
+        this.email = validatedUser.getEmail();
+        this.password = validatedUser.getPassword();
     }
 
     public String getDescription() {
@@ -112,6 +119,10 @@ public class User {
     }
 
     public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void encodePassword() {
         this.password = hashpw(password, gensalt());
     }
 

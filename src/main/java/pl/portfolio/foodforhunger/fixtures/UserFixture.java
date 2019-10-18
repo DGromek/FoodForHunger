@@ -25,7 +25,7 @@ public class UserFixture {
 
         user1.setLogin("KuchcikPL");
         user1.setEmail("SampleMail@sample.net");
-        user1.setPassword("1234567");
+        user1.setPassword("12345678");
 
         fileInputStream = new FileInputStream("src/main/resources/static/placeholders/profile-pic.png");
 
@@ -38,7 +38,7 @@ public class UserFixture {
 
         user2.setLogin("Smerf_Łasuch");
         user2.setEmail("SŁacuch@sample.net");
-        user2.setPassword("1234567");
+        user2.setPassword("12345678");
 
         fileInputStream = new FileInputStream("src/main/resources/static/placeholders/profile-pic-2.jpg");
 

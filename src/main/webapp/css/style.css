@@ -73,3 +73,8 @@ body, html {
     width: 15px;
     height: 15px;
 }
+
+error-message {
+    color: darkred;
+
+}

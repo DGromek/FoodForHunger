@@ -10,61 +10,60 @@
 <html>
 <html lang="en">
 <head>
+    <script>
+        function clearPasswordInputs() {
+            document.getElementById('password-1').value = '';
+            document.getElementById('password-2').value = '';
+        }
+    </script>
     <title></title>
 </head>
-<body>
+<body onload="clearPasswordInputs()">
 
 <%@ include file="../core/header.jsp" %>
 
-<div class="bg-register container-fluid main-box">
-    <div class="row">
-        <div class="col-md-4 align-self-center mt-5 mb-auto mx-auto p-5 shadow rounded box-size bg-page">
-            <h5 class="pb-2">Zarejestruj się</h5>
-            <div class="alert alert-danger">
+<div class="container-fluid">
+    <div class="row bg-register">
+        <div class="col-lg-4 mt-5 mb-auto mx-auto p-5 shadow rounded box-size bg-page">
+        <h5 class="pb-2">Zarejestruj się</h5>
 
+        <form:form action="/register" method="post" modelAttribute="userToRegister">
+
+            <!-- Inputs -->
+            <div class="form-group" id="register-form">
+                <label>Podaj login</label>
+                <form:input class="form-control" path="login"/>
+                <small><form:errors class="alert alert-danger d-block form-text" path="login"/></small>
             </div>
-            <form:form action="/register" method="post" modelAttribute="user">
-                <form:hidden path="id"/>
+            <div class="form-group">
+                <label>Podaj email</label>
+                <form:input class="form-control" type="email" path="email"/>
+                <small><form:errors class="alert alert-danger d-block form-text" path="email"/></small>
+            </div>
+            <div class="form-group">
+                <label>Podaj hasło</label>
+                <form:input value="" class="form-control" type="password" path="password" alt="password" id="password-1"/>
+                <small><form:errors class="alert alert-danger d-block form-text" path="password"/></small>
+            </div>
+            <div class="form-group">
+                <label>Powtórz hasło</label>
+                <form:input class="form-control" type="password" path="repeatedPassword" id="password-2"/>
+                <small><form:errors class="alert alert-danger d-block form-text" path="repeatedPassword"/></small>
+            </div>
 
-                <!-- Inputs -->
-                <div class="form-group">
-                    <label>Podaj login</label>
-                    <form:input class="form-control" path="login"/>
-                    <div>
-                        <form:errors class="alert alert-danger" role="alert" path="login"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Podaj email</label>
-                    <form:input class="form-control" type="email" path="email"/>
-                    <div>
-                    <form:errors class="alert alert-danger" role="alert" path="email"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Podaj hasło</label>
-                    <form:input class="form-control" type="password" path="password"/>
-                    <div>
-                    <form:errors class="alert alert-danger" role="alert" path="password"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Powtórz hasło</label>
-                    <input class="form-control" type="password">
-                </div>
+            <!-- Checkboxes -->
+            <div class="form-check">
+                <form:checkbox class="form-check-input big-checkbox" path="accepted"/>
+                <label class="form-check-label">
+                    Akceptuje <a href="">regulamin serwisu</a>.
+                </label>
+            </div>
+            <small><form:errors class="alert alert-danger d-block form-text" path="accepted"/></small>
 
-                <!-- Checkboxes -->
-                <div class="form-check">
-                    <input class="form-check-input big-checkbox" type="checkbox" value="">
-                    <label class="form-check-label">
-                        Akceptuje <a href="">regulamin serwisu</a>.
-                    </label>
-                </div>
+            <!-- Submit button -->
+            <form:button class="btn btn-primary btn-lg mt-4 px-4" type="submit">Wyślij</form:button>
 
-                <!-- Submit button -->
-                <form:button class="btn btn-primary btn-lg mt-4 px-4" type="submit">Wyślij</form:button>
-
-            </form:form>
+        </form:form>
         </div>
     </div>
 </div>

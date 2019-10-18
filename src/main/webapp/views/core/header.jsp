@@ -53,7 +53,7 @@
             <c:otherwise>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/dish/search">Wyszukaj danie</a>
+                        <a class="nav-link" href="/dish/browser">Wyszukaj danie</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Wystaw danie</a>
@@ -65,7 +65,7 @@
                         <a class="nav-link" href="/logout">Wyloguj</a>
                     </li>
                     <li class="nav-item">
-                        Witaj ${loggedUser.login}!
+                        <a class="nav-link">Witaj ${loggedUser.login}!</a>
                     </li>
                 </ul>
             </c:otherwise>

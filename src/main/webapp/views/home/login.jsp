@@ -17,21 +17,27 @@
 <div class="bg-register container-fluid main-box">
     <div class="row">
         <div class="col-md-4 align-self-center mt-5 mb-auto mx-auto p-5 shadow rounded box-size bg-page">
-            <h5 class="pb-2">Zaloguj się</h5>
-            <form>
 
+            <c:if test="${err}">
+                <div class="alert alert-danger">
+                    Wprowadzono nieprawidłowe dane logowania.
+                </div>
+            </c:if>
+
+            <h5 class="pb-2">Zaloguj się</h5>
+            <form action="/login" method="post">
                 <!-- Inputs -->
                 <div class="form-group">
                     <label>Podaj login</label>
-                    <input class="form-control">
+                    <input class="form-control" id="login" name="login">
                 </div>
                 <div class="form-group">
                     <label>Podaj hasło</label>
-                    <input class="form-control" type="password">
+                    <input class="form-control" type="password" id="password" name="password">
                 </div>
 
                 <!-- Submit button -->
-                <button class="btn btn-primary btn-lg mt-4 px-4">Wyślij</button>
+                <button class="btn btn-primary btn-lg mt-4 px-4" type="submit">Wyślij</button>
 
             </form>
         </div>
