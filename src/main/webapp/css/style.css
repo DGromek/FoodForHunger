@@ -36,15 +36,21 @@ body, html {
 
 /* Page images sizes */
 
-#dish-img {
+#dish-details-thumbnail {
     width: 1900px;
     height: 450px;
     object-fit: cover;
 }
 
-#dish-thumbnail {
+#dish-profile-thumbnail {
     width: 475px;
     height: 215px;
+    object-fit: cover;
+}
+
+#dish-browser-thumbnail {
+    width: 350px;
+    height: 180px;
     object-fit: cover;
 }
 
@@ -54,7 +60,7 @@ body, html {
     object-fit: cover;
 }
 
-#avatar-thumbnail {
+#user-avatar-thumbnail {
     width: 40px;
     height: 40px;
 }

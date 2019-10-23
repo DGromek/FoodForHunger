@@ -94,14 +94,14 @@
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
                     <c:forEach items="${commentPage.iterator()}" var="comment" varStatus="iteration">
 
-                        <c:if test="${(iteration.count eq 1) || (iteration.count eq 3)}">
+                        <c:if test="${(iteration.count % 2 == 1)}">
                             <div class="card-deck">
                         </c:if>
 
                         <div class="card my-4 border shadow bg-light rounded">
                             <div class="card-header">
                                 <img src="/user/getImage/${comment.author.id}" class="img-fluid rounded-circle pr-1"
-                                     id="avatar-thumbnail">
+                                     id="user-avatar-thumbnail">
                                 <a href="/user/profile/${comment.author.id}/0/0">${comment.author.login}</a>
                             </div>
                             <div class="card-body">
@@ -111,7 +111,7 @@
                             </div>
                         </div>
 
-                        <c:if test="${(iteration.count eq 2) || (iteration.count eq 4)}">
+                        <c:if test="${(iteration.count % 2 == 0) || (!commentPage.iterator().hasNext())}">
                             </div>
                         </c:if>
                     </c:forEach>
@@ -146,7 +146,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <%@ include file="../core/footer.jsp" %>

@@ -51,5 +51,16 @@ public class DishFixture {
 
         dish3.setUser(userRepository.getOne(2L));
         dishRepository.save(dish3);
+
+        Dish dish4 = new Dish();
+        dish4.setName("Makaron z serem");
+        dish4.setDescription("Studencki klasyk obiadowy");
+        dish4.setPrice(2.2);
+        dish4.setCity("Łódź");
+        dish4.setStreet("Piotrkowska");
+        dish4.setHouseNr("66");
+
+        dish4.setUser(userRepository.getOne(1L));
+        dishRepository.save(dish4);
     }
 }

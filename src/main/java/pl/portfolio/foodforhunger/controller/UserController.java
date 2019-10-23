@@ -16,10 +16,8 @@ import pl.portfolio.foodforhunger.service.UserService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
+
 
 @Controller
 @RequestMapping("/user")

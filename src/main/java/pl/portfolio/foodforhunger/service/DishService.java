@@ -47,6 +47,10 @@ public class DishService {
         return dishRepository.findAll(PageRequest.of(id, size));
     }
 
+
+
+
+
     public boolean isOwner(Dish dish, User loggedUser) {
         if (loggedUser.getId().equals(dish.getUser().getId())) {
             return true;

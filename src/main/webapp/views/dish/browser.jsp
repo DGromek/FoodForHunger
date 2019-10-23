@@ -105,127 +105,50 @@
     </nav>
 
     <!-- Results -->
-    <div class="row card-deck p-4">
 
+
+<c:forEach items="${dishPage.iterator()}" var="dish" varStatus="iteration">
+
+    <c:if test="${(iteration.count % 3 == 1)}">
+        <div class="row card-deck p-4">
+    </c:if>
         <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
+            <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
             <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
+                <h4 class="card-title">${dish.name}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">By <a href="/user/profile/${dish.user.id}/0/0">${dish.user.login}</a></h6>
+                <p class="card-text">${dish.description}</p>
+                <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
             </div>
         </div>
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
+    <c:if test="${(iteration.count % 3 == 0) || (!dishPage.iterator().hasNext())}">
         </div>
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row card-deck p-4">
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
-        </div>
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
-        </div>
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row card-deck p-4">
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
-        </div>
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
-        </div>
-
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="https://placehold.it/350x180">
-            <div class="card-body">
-                <h4 class="card-title">Sample title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a href="">Adam</a></h6>
-                <p class="card-text">Biltong ground round excepteur et sint swine velit proident ut. Boudin veniam ut,
-                    chuck brisket eu.</p>
-                <a href="" class="btn btn-info">Zobacz więcej!</a>
-            </div>
-        </div>
-
-    </div>
-
+    </c:if>
+</c:forEach>
 </div>
 
 <!-- Results pagination -->
 <nav>
     <ul class="pagination justify-content-center pb-4">
-        <li class="page-item"><a class="page-link" href="">&laquo;</a></li>
-        <li class="page-item"><a class="page-link" href="">1</a></li>
-        <li class="page-item active"><a class="page-link" href="">2</a></li>
-        <li class="page-item"><a class="page-link" href="">3</a></li>
-        <li class="page-item"><a class="page-link" href="">&raquo;</a></li>
+        <c:if test="${dishPage.number eq 1}">
+            <li class="page-item"><a
+                    href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
+                    class="page-link">&laquo;</a></li>
+            <li class="page-item"><a
+                    href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
+                    class="page-link">${dishPage.number}</a></li>
+        </c:if>
+
+        <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
+
+        <c:if test="${dishPagePage.number < dishPage.totalPages - 1}">
+            <li class="page-item"><a
+                    href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
+                    class="page-link">${dishPage.number + 2}</a></li>
+            <li class="page-item"><a
+                    href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
+                    class="page-link">&raquo;</a></li>
+        </c:if>
     </ul>
 </nav>
 

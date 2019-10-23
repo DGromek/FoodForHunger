@@ -1,6 +1,7 @@
 package pl.portfolio.foodforhunger.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +34,10 @@ public class DishController {
         return "dish/details";
     }
 
-    @RequestMapping("/browser")
-    public String browser(Model model) {
-        List<Dish> dishes = dishService.findAll();
-        model.addAttribute("dishes", dishes);
+    @RequestMapping("/browser/{dishPageIdx}")
+    public String browser(Model model, @PathVariable int dishPageIdx) {
+        Page<Dish> dishPage = dishService.getPageOfResults(dishPageIdx, 9);
+        model.addAttribute("dishPage", dishPage);
         return "dish/browser";
     }
 
