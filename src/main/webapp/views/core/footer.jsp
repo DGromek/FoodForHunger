@@ -35,7 +35,7 @@
                                                          href="mailto:dawidgromek.1997@gmail.com">Mail</a><br>
                 <a class="fa fa-github-square"></a> <a class="text-dark" href="https://github.com/DGromek"
                                                        target="_blank">Github</a><br>
-                <a class="fa fa-linkedin-square"></a> <a class="text-dark" href="mailto:dawidgromek.1997@gmail.com"
+                <a class="fa fa-linkedin-square"></a> <a class="text-dark" href=""
                                                          target="_blank">Linked in</a><br>
             </div>
         </div>

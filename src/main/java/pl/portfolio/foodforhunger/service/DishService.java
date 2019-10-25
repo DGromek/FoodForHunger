@@ -43,12 +43,11 @@ public class DishService {
     }
 
     //Pagination
-    public Page<Dish> getPageOfResults(int id, int size) {
-        return dishRepository.findAll(PageRequest.of(id, size));
+    public Page<Dish> findAllByUserId(Long userId, int pageId,  int size) {
+        return dishRepository.findAllByUserId(userId, PageRequest.of(pageId, size));
     }
 
-
-
+    public Page<Dish> findAll(int pageId, int size) { return dishRepository.findAll(PageRequest.of(pageId, size)); }
 
 
     public boolean isOwner(Dish dish, User loggedUser) {

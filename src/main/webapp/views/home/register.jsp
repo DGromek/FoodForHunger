@@ -32,8 +32,8 @@
             <!-- Inputs -->
             <div class="form-group" id="register-form">
                 <label>Podaj login</label>
-                <form:input class="form-control" path="login"/>
-                <small><form:errors class="alert alert-danger d-block form-text" path="login"/></small>
+                <form:input class="form-control" path="username"/>
+                <small><form:errors class="alert alert-danger d-block form-text" path="username"/></small>
             </div>
             <div class="form-group">
                 <label>Podaj email</label>

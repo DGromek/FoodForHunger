@@ -1,9 +1,9 @@
-package pl.portfolio.foodforhunger.repository;
+package pl.portfolio.foodforhunger.WORKINPROGRESS;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.portfolio.foodforhunger.entity.Message;
+import pl.portfolio.foodforhunger.WORKINPROGRESS.Message;
 
 @Repository
 @Transactional

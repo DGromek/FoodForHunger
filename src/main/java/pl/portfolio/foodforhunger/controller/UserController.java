@@ -38,8 +38,8 @@ public class UserController {
     public String profile(@PathVariable Long id, @PathVariable int dishPageIdx, @PathVariable int commentPageIdx, Model model) {
         User user = userService.getOne(id);
 
-        Page<Dish> dishPage = dishService.getPageOfResults(dishPageIdx, 2);
-        Page<Comment> commentPage = commentService.getPageOfResults(commentPageIdx, 4);
+        Page<Dish> dishPage = dishService.findAllByUserId(user.getId(), dishPageIdx, 2);
+        Page<Comment> commentPage = commentService.findAllByReceiverId(user.getId(), commentPageIdx, 4);
 
         model.addAttribute("user", user);
         model.addAttribute("dishPage", dishPage);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.entity.UserDTO;
+import pl.portfolio.foodforhunger.dto.UserDTO;
 import pl.portfolio.foodforhunger.service.UserService;
 
 import javax.servlet.http.HttpSession;
@@ -25,7 +25,7 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     String home() {
         return "home/home";
     }
@@ -35,17 +35,17 @@ public class HomeController {
         return "home/login";
     }
 
-    @PostMapping("/login")
-    public String login(Model model, HttpSession session, @RequestParam("login") String login, @RequestParam("password") String password) {
-        User user = userService.userAuthentication(login, password);
-
-        if (user != null) {
-            session.setAttribute("loggedUser", user);
-            return "redirect:/home";
-        }
-        model.addAttribute("err", true);
-        return "home/login";
-    }
+//    @PostMapping("/login")
+//    public String login(Model model, HttpSession session, @RequestParam("login") String login, @RequestParam("password") String password) {
+//        User user = userService.userAuthentication(login, password);
+//
+//        if (user != null) {
+//            session.setAttribute("loggedUser", user);
+//            return "redirect:/home";
+//        }
+//        model.addAttribute("err", true);
+//        return "home/login";
+//    }
 
     @GetMapping("/register")
     String register(Model model) {
@@ -61,14 +61,13 @@ public class HomeController {
         }
 
         User user = new User(userToRegister);
-        user.encodePassword();
         userService.save(user);
-        return "redirect:/home";
+        return "redirect:/";
     }
 
-    @RequestMapping("/logout")
-    public String logout(HttpSession session) {
-        session.removeAttribute("loggedUser");
-        return "redirect:/home";
-    }
+//    @RequestMapping("/logout")
+//    public String logout(HttpSession session) {
+//        session.removeAttribute("loggedUser");
+//        return "redirect:/home";
+//    }
 }

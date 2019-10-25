@@ -1,4 +1,4 @@
-package pl.portfolio.foodforhunger.entity;
+package pl.portfolio.foodforhunger.dto;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Email;
@@ -12,7 +12,7 @@ public class UserDTO {
     @NotEmpty(message = "Login nie może być pusty.")
     @Size(min = 5, max = 15, message = "Login musi mieć długość między 5 a 15 znaków.")
     @Column(unique=true)
-    private String login;
+    private String username;
 
     @NotEmpty(message = "Email nie może być pusty.")
     @Email
@@ -27,12 +27,12 @@ public class UserDTO {
 
     private boolean accepted;
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

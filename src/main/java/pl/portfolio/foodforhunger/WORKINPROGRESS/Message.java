@@ -1,4 +1,6 @@
-package pl.portfolio.foodforhunger.entity;
+package pl.portfolio.foodforhunger.WORKINPROGRESS;
+
+import pl.portfolio.foodforhunger.entity.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

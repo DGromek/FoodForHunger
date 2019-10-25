@@ -8,5 +8,5 @@ import pl.portfolio.foodforhunger.entity.User;
 @Repository
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByLogin(String login);
+    User findByUsername(String username);
 }

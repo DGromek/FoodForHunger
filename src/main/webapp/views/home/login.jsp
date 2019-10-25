@@ -25,20 +25,20 @@
             </c:if>
 
             <h5 class="pb-2">Zaloguj się</h5>
-            <form action="/login" method="post">
+            <form method="post">
                 <!-- Inputs -->
                 <div class="form-group">
                     <label>Podaj login</label>
-                    <input class="form-control" id="login" name="login">
+                    <input class="form-control" name="username">
                 </div>
                 <div class="form-group">
                     <label>Podaj hasło</label>
-                    <input class="form-control" type="password" id="password" name="password">
+                    <input class="form-control" type="password" name="password">
                 </div>
 
                 <!-- Submit button -->
                 <button class="btn btn-primary btn-lg mt-4 px-4" type="submit">Wyślij</button>
-
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
         </div>
     </div>

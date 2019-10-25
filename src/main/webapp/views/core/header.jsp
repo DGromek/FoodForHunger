@@ -31,7 +31,7 @@
 <nav class="navbar navbar-expand-md text-dark navbar-light bg-light p-3">
 
     <!--Brand-->
-    <a class="navbar-brand" href="/home">Brand name</a>
+    <a class="navbar-brand" href="/home">Food4Głód</a>
 
     <!--Toggle list button-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -53,7 +53,7 @@
             <c:otherwise>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/dish/browser">Wyszukaj danie</a>
+                        <a class="nav-link" href="/dish/browser/0">Wyszukaj danie</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Wystaw danie</a>

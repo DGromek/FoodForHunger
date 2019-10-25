@@ -43,10 +43,10 @@
 
                 <!-- Dishes section -->
                 <div class="tab-pane fade show active" id="dishes" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="card-deck">
+                    <div class="row card-deck">
 
                         <c:forEach items="${dishPage.iterator()}" var="dish">
-                            <div class="card my-4 p-3 border shadow bg-light">
+                            <div class="card col-md-6 my-4 p-3 border shadow bg-light">
                                 <img class="card-img-top img-fluid" src="https://placehold.it/100x45">
                                 <div class="card-body">
                                     <h5>${dish.name}</h5>
@@ -95,10 +95,10 @@
                     <c:forEach items="${commentPage.iterator()}" var="comment" varStatus="iteration">
 
                         <c:if test="${(iteration.count % 2 == 1)}">
-                            <div class="card-deck">
+                            <div class="row card-deck">
                         </c:if>
 
-                        <div class="card my-4 border shadow bg-light rounded">
+                        <div class="card col-md-6 my-4 border shadow bg-light rounded">
                             <div class="card-header">
                                 <img src="/user/getImage/${comment.author.id}" class="img-fluid rounded-circle pr-1"
                                      id="user-avatar-thumbnail">
