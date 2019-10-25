@@ -17,7 +17,7 @@
 
         <!-- Header -->
         <div class="col-8 col-md-9 col-lg-10 align-self-center">
-            <h2>${user.login}</h2>
+            <h2>${user.username}</h2>
             <hr>
             <p>${user.description}</p>
         </div>
@@ -102,7 +102,7 @@
                             <div class="card-header">
                                 <img src="/user/getImage/${comment.author.id}" class="img-fluid rounded-circle pr-1"
                                      id="user-avatar-thumbnail">
-                                <a href="/user/profile/${comment.author.id}/0/0">${comment.author.login}</a>
+                                <a href="/user/profile/${comment.author.username}/0/0">${comment.author.username}</a>
                             </div>
                             <div class="card-body">
                                 <div class="card-text">

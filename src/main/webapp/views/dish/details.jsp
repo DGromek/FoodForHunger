@@ -18,7 +18,7 @@
         </div>
     </div>
     <h2 class="pt-2">${dish.name}</h2>
-    <h6>By <a href="/user/profile/${dish.user.id}">${dish.user.username}</a></h6>
+    <h6>By <a href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
     <p>${dish.description}</p>
 
     <div class="text-right">

@@ -22,30 +22,27 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         this.userService = userService;
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = userService.findByUsername(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException(username);
-//        }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userService.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
+        }
 //        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 //
 //        for (Role role : user.getRoles()) {
 //            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
 //        }
-//        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-//    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) {
-        User user = userService.findByUsername(username);
-        if (user == null) {throw new UsernameNotFoundException(username); }
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        user.getRoles().forEach(r ->
-                grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getRoles());
     }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) {
+//        User user = userService.findByUsername(username);
+//        if (user == null) {throw new UsernameNotFoundException(username); }
+//        return new org.springframework.security.core.userdetails.User(
+//                user.getUsername(), user.getPassword(), user.getRoles());
+//    }
 
 
 }

@@ -64,6 +64,17 @@ body, html {
     width: 40px;
     height: 40px;
 }
+
+#error-403-thumbnail {
+    width: 400px;
+    height: 225px;
+
+}
+
+.page-wrap {
+    min-height: 100vh;
+}
+
 /* Social media icons styles */
 
 .fa {
@@ -80,7 +91,10 @@ body, html {
     height: 15px;
 }
 
-error-message {
-    color: darkred;
+.error-code {
+    font-size: 200px;
+}
 
+.error-message {
+    color: darkred;
 }

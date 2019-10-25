@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: A754379
@@ -7,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html lang="pl">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -31,7 +32,7 @@
 <nav class="navbar navbar-expand-md text-dark navbar-light bg-light p-3">
 
     <!--Brand-->
-    <a class="navbar-brand" href="/home">Food4Głód</a>
+    <a class="navbar-brand" href="/">Food4Głód</a>
 
     <!--Toggle list button-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -39,37 +40,41 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbar">
-        <c:choose>
-            <c:when test="${empty loggedUser}">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/login">Zaloguj się</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register">Zarejestruj się</a>
-            </li>
-        </ul>
-            </c:when>
-            <c:otherwise>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dish/browser/0">Wyszukaj danie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Wystaw danie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/profile/${loggedUser.id}/0/0">Twoje konto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Wyloguj</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Witaj ${loggedUser.login}!</a>
-                    </li>
-                </ul>
-            </c:otherwise>
-        </c:choose>
+        <sec:authorize access="!isAuthenticated()">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Zaloguj się</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Zarejestruj się</a>
+                </li>
+            </ul>
+        </sec:authorize>
+
+        <sec:authorize access="isAuthenticated()">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Wystaw danie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dish/browser/0">Szukaj dania</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/profile/<sec:authentication property="name"/>/0/0">Twoje konto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript: document.logoutForm.submit()">Wyloguj</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Witaj <sec:authentication property="name"/>!</a>
+                </li>
+            </ul>
+
+            <form name="logoutForm" action="/logout" method="post" hidden="true">
+                <input hidden type="submit" value="Sign Out"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+        </sec:authorize>
     </div>
 </nav>
 

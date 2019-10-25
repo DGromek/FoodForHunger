@@ -7,12 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.dto.UserDTO;
 import pl.portfolio.foodforhunger.service.UserService;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -35,18 +33,6 @@ public class HomeController {
         return "home/login";
     }
 
-//    @PostMapping("/login")
-//    public String login(Model model, HttpSession session, @RequestParam("login") String login, @RequestParam("password") String password) {
-//        User user = userService.userAuthentication(login, password);
-//
-//        if (user != null) {
-//            session.setAttribute("loggedUser", user);
-//            return "redirect:/home";
-//        }
-//        model.addAttribute("err", true);
-//        return "home/login";
-//    }
-
     @GetMapping("/register")
     String register(Model model) {
         model.addAttribute("userToRegister", new UserDTO());
@@ -65,9 +51,4 @@ public class HomeController {
         return "redirect:/";
     }
 
-//    @RequestMapping("/logout")
-//    public String logout(HttpSession session) {
-//        session.removeAttribute("loggedUser");
-//        return "redirect:/home";
-//    }
 }

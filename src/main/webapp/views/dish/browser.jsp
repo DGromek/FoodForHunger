@@ -115,7 +115,7 @@
             <div class="card-body">
                 <h4 class="card-title">${dish.name}</h4>
                 <h6 class="card-subtitle mb-2 text-muted">By <a
-                        href="/user/profile/${dish.user.id}/0/0">${dish.user.login}</a></h6>
+                        href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
                 <p class="card-text">${dish.description}</p>
                 <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
             </div>
@@ -124,6 +124,8 @@
             </div>
         </c:if>
     </c:forEach>
+
+
 </div>
 
 <!-- Results pagination -->
