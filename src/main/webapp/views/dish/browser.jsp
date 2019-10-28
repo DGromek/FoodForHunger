@@ -116,7 +116,7 @@
                                     href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
                             <p class="card-text">${dish.description}</p>
                         </div>
-                        <div class="card-footer bg-transparent border-0 px-1 p-3">
+                        <div class="card-footer bg-transparent border-0 px-1 pb-2">
                             <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
                         </div>
                     </div>

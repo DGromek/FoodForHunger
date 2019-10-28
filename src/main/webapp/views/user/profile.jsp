@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="card-footer border-0 text-right bg-light">
                                     <form action="/dish/details/${dish.id}">
-                                        <button type="submit" class="btn btn-outline-info btn-sm">Szczegóły</button>
+                                        <button type="submit" class="btn btn-info btn-sm">Szczegóły</button>
                                     </form>
                                 </div>
                             </div>
@@ -97,10 +97,24 @@
                             <c:forEach items="${row.content}" var="comment">
                                 <div class="card col-md-6 my-3 border shadow bg-light rounded p-0">
                                     <div class="card-header">
-                                        <img src="/user/getImage/${comment.author.id}"
-                                             class="img-fluid rounded-circle pr-1"
-                                             id="user-avatar-thumbnail">
-                                        <a href="/user/profile/${comment.author.username}/0/0">${comment.author.username}</a>
+                                        <div class="row">
+                                            <div class="px-2">
+                                                <img src="/user/getImage/${comment.author.id}"
+                                                     class="img-fluid rounded-circle pr-1"
+                                                     id="user-avatar-thumbnail">
+                                            </div>
+                                            <div class="col m-auto p-0">
+                                                <a href="/user/profile/${comment.author.username}/0/0">${comment.author.username}</a>
+                                            </div>
+                                            <div class="col m-auto text-right">
+                                                <c:forEach step="1" begin="1" end="${comment.rating}">
+                                                    <i class="fa fa-star"></i>
+                                                </c:forEach>
+                                                <c:forEach step="1" begin="1" end="${5 - comment.rating}">
+                                                    <i class="fa fa-star-o"></i>
+                                                </c:forEach>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="card-text">
@@ -116,15 +130,23 @@
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
                             <c:if test="${commentPage.number eq 1}">
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}" class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}" class="page-link">${commentPage.number}</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}"
+                                        class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}"
+                                        class="page-link">${commentPage.number}</a></li>
                             </c:if>
 
                             <li class="page-item active"><a class="page-link">${commentPage.number + 1}</a></li>
 
                             <c:if test="${commentPage.number < commentPage.totalPages - 1}">
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}" class="page-link">${commentPage.number + 2}</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}" class="page-link">&raquo;</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}"
+                                        class="page-link">${commentPage.number + 2}</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}"
+                                        class="page-link">&raquo;</a></li>
                             </c:if>
                         </ul>
                     </nav>
