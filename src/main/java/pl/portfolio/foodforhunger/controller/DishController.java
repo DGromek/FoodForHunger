@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.portfolio.foodforhunger.entity.Dish;
 import pl.portfolio.foodforhunger.service.DishService;
+import pl.portfolio.foodforhunger.utils.PageOfRows;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
@@ -35,7 +36,9 @@ public class DishController {
     @RequestMapping("/browser/{dishPageIdx}")
     public String browser(Model model, @PathVariable int dishPageIdx) {
         Page<Dish> dishPage = dishService.findAll(dishPageIdx, 9);
-        model.addAttribute("dishPage", dishPage);
+        PageOfRows<Dish> dishPageOfRows = new PageOfRows<>(dishPage, 3);
+
+        model.addAttribute("dishPage", dishPageOfRows);
         return "dish/browser";
     }
 

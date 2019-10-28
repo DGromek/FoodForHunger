@@ -13,6 +13,7 @@ import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.service.CommentService;
 import pl.portfolio.foodforhunger.service.DishService;
 import pl.portfolio.foodforhunger.service.UserService;
+import pl.portfolio.foodforhunger.utils.PageOfRows;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
@@ -40,10 +41,11 @@ public class UserController {
 
         Page<Dish> dishPage = dishService.findAllByUserId(user.getId(), dishPageIdx, 2);
         Page<Comment> commentPage = commentService.findAllByReceiverId(user.getId(), commentPageIdx, 4);
+        PageOfRows<Comment> commentPageOfRows = new PageOfRows<>(commentPage, 2);
 
         model.addAttribute("user", user);
         model.addAttribute("dishPage", dishPage);
-        model.addAttribute("commentPage", commentPage);
+        model.addAttribute("commentPage", commentPageOfRows);
         return "/user/profile";
     }
 

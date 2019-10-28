@@ -1,6 +1,6 @@
 package pl.portfolio.foodforhunger.entity;
 
-import pl.portfolio.foodforhunger.dto.UserDTO;
+import pl.portfolio.foodforhunger.utils.UserDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;

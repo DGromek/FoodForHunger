@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.dto.UserDTO;
+import pl.portfolio.foodforhunger.utils.UserDTO;
 import pl.portfolio.foodforhunger.service.UserService;
 
 import javax.validation.Valid;

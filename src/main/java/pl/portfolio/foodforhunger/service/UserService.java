@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import pl.portfolio.foodforhunger.entity.Role;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.dto.UserDTO;
+import pl.portfolio.foodforhunger.utils.UserDTO;
 import pl.portfolio.foodforhunger.repository.RoleRepository;
 import pl.portfolio.foodforhunger.repository.UserRepository;
 

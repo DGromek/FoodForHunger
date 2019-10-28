@@ -51,7 +51,7 @@
                                 <div class="card-body">
                                     <h5>${dish.name}</h5>
                                     <p class="card-text">
-                                        ${dish.description}
+                                            ${dish.description}
                                     </p>
 
                                 </div>
@@ -92,52 +92,39 @@
 
                 <!-- Comments section -->
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
-                    <c:forEach items="${commentPage.iterator()}" var="comment" varStatus="iteration">
-
-                        <c:if test="${(iteration.count % 2 == 1)}">
-                            <div class="row card-deck">
-                        </c:if>
-
-                        <div class="card col-md-6 my-4 border shadow bg-light rounded">
-                            <div class="card-header">
-                                <img src="/user/getImage/${comment.author.id}" class="img-fluid rounded-circle pr-1"
-                                     id="user-avatar-thumbnail">
-                                <a href="/user/profile/${comment.author.username}/0/0">${comment.author.username}</a>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <p>${comment.content}</p>
+                    <c:forEach items="${commentPage.content}" var="row">
+                        <div class="row card-deck">
+                            <c:forEach items="${row.content}" var="comment" varStatus="iteration">
+                                <div class="card col-md-6 my-4 border shadow bg-light rounded">
+                                    <div class="card-header">
+                                        <img src="/user/getImage/${comment.author.id}"
+                                             class="img-fluid rounded-circle pr-1"
+                                             id="user-avatar-thumbnail">
+                                        <a href="/user/profile/${comment.author.username}/0/0">${comment.author.username}</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-text">
+                                            <p>${comment.content}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </c:forEach>
                         </div>
-
-                        <c:if test="${(iteration.count % 2 == 0) || (!commentPage.iterator().hasNext())}">
-                            </div>
-                        </c:if>
                     </c:forEach>
-
 
                     <!-- Comments paggination -->
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
                             <c:if test="${commentPage.number eq 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}"
-                                        class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number - 1}"
-                                        class="page-link">${commentPage.number}</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}" class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}" class="page-link">${commentPage.number}</a></li>
                             </c:if>
 
                             <li class="page-item active"><a class="page-link">${commentPage.number + 1}</a></li>
 
                             <c:if test="${commentPage.number < commentPage.totalPages - 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}"
-                                        class="page-link">${commentPage.number + 2}</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number}/${commentPage.number + 1}"
-                                        class="page-link">&raquo;</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}" class="page-link">${commentPage.number + 2}</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}" class="page-link">&raquo;</a></li>
                             </c:if>
                         </ul>
                     </nav>

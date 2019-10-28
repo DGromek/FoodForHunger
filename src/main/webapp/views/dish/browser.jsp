@@ -105,26 +105,22 @@
     </nav>
 
     <!-- Results -->
-    <c:forEach items="${dishPage.iterator()}" var="dish" varStatus="iteration">
-
-        <c:if test="${(iteration.count % 3 == 1)}">
+    <c:forEach items="${dishPage.content}" var="row">
             <div class="row card-deck p-4">
-        </c:if>
-        <div class="card col-md-4 border-0 shadow pt-3">
-            <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
-            <div class="card-body">
-                <h4 class="card-title">${dish.name}</h4>
-                <h6 class="card-subtitle mb-2 text-muted">By <a
-                        href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
-                <p class="card-text">${dish.description}</p>
-                <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
+                <c:forEach items="${row.content}" var="dish">
+                    <div class="card col-md-4 border-0 shadow pt-3">
+                        <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
+                        <div class="card-body">
+                            <h4 class="card-title">${dish.name}</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">By <a
+                                    href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
+                            <p class="card-text">${dish.description}</p>
+                            <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
-        </div>
-        <c:if test="${(iteration.count % 3 == 0) || (!dishPage.iterator().hasNext())}">
-            </div>
-        </c:if>
     </c:forEach>
-
 
 </div>
 
@@ -132,23 +128,15 @@
 <nav>
     <ul class="pagination justify-content-center pb-4">
         <c:if test="${dishPage.number eq 1}">
-            <li class="page-item"><a
-                    href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
-                    class="page-link">&laquo;</a></li>
-            <li class="page-item"><a
-                    href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
-                    class="page-link">${dishPage.number}</a></li>
+            <li class="page-item"><a href="/dish/browser/0" class="page-link">&laquo;</a></li>
+            <li class="page-item"><a href="/dish/browser/${dishPage.number - 1}" class="page-link">${dishPage.number}</a></li>
         </c:if>
 
         <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
 
-        <c:if test="${dishPagePage.number < dishPage.totalPages - 1}">
-            <li class="page-item"><a
-                    href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
-                    class="page-link">${dishPage.number + 2}</a></li>
-            <li class="page-item"><a
-                    href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
-                    class="page-link">&raquo;</a></li>
+        <c:if test="${dishPage.number < dishPage.totalPages - 1}">
+            <li class="page-item"><a href="/dish/browser/${dishPage.number + 1}" class="page-link">${dishPage.number + 2}</a></li>
+            <li class="page-item"><a href="/dish/browser/${dishPage.totalPages - 1}" class="page-link">&raquo;</a></li>
         </c:if>
     </ul>
 </nav>
