@@ -106,15 +106,17 @@
 
     <!-- Results -->
     <c:forEach items="${dishPage.content}" var="row">
-            <div class="row card-deck p-4">
+            <div class="row card-deck py-2">
                 <c:forEach items="${row.content}" var="dish">
-                    <div class="card col-md-4 border-0 shadow pt-3">
+                    <div class="card col-md-4 border-0 shadow pt-4">
                         <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
-                        <div class="card-body">
+                        <div class="card-body px-1">
                             <h4 class="card-title">${dish.name}</h4>
                             <h6 class="card-subtitle mb-2 text-muted">By <a
                                     href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
                             <p class="card-text">${dish.description}</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 px-1 p-3">
                             <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
                         </div>
                     </div>

@@ -94,8 +94,8 @@
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
                     <c:forEach items="${commentPage.content}" var="row">
                         <div class="row card-deck">
-                            <c:forEach items="${row.content}" var="comment" varStatus="iteration">
-                                <div class="card col-md-6 my-4 border shadow bg-light rounded">
+                            <c:forEach items="${row.content}" var="comment">
+                                <div class="card col-md-6 my-3 border shadow bg-light rounded p-0">
                                     <div class="card-header">
                                         <img src="/user/getImage/${comment.author.id}"
                                              class="img-fluid rounded-circle pr-1"
