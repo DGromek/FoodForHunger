@@ -11,12 +11,10 @@ public class UserDTO {
 
     @NotEmpty(message = "Login nie może być pusty.")
     @Size(min = 5, max = 15, message = "Login musi mieć długość między 5 a 15 znaków.")
-    //@Column(unique=true)
     private String username;
 
     @NotEmpty(message = "Email nie może być pusty.")
     @Email
-    //@Column(unique=true)
     private String email;
 
     @NotEmpty(message = "Hasło nie może być puste.")

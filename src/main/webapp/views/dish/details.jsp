@@ -61,8 +61,8 @@
                 <!-- Content -->
                 <h5 class="py-2">Jesteś pewien?</h5>
                 <div class="d-flex justify-content-end">
-                <button class="btn btn-danger mr-1">Usuń</button>
                 <button class="btn btn-success" data-dismiss="modal" aria-label="Close">Anuluj</button>
+                <button class="btn btn-danger mr-1">Usuń</button>
                 </div>
             </div>
 

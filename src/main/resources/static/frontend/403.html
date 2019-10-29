@@ -12,20 +12,14 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Own styles -->
-    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../../webapp/css/style.css"/>
 </head>
-<body class="page-wrap d-flex flex-row align-items-center">
+<body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 text-center">
-            <span class="error-code">403</span><br>
-            <span>Nie ma opcji</span>
-        </div>
-        <div class="col-md-8">
-            <img src="../../img/403.jpg" class="error-403-thumbnail">
-        </div>
-    </div>
+<div class="container text-center mt-5">
+    <span class="error-code font-weight-light">403</span><br>
+    <p class="error-code-description">Obawiam się, że nie masz dostępu do tego miejsca. No już, uciekaj zanim zadzwonię na policję!</p>
+    <button class="btn btn-primary btn-lg" onclick="location.href='../../../webapp';">Uciekaj!</button>
 </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

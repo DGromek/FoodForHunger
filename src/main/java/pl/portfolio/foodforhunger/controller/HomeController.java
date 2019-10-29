@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.portfolio.foodforhunger.entity.User;
@@ -23,15 +24,15 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
-    String home() {
-        return "home/home";
-    }
-
-    @GetMapping("/login")
-    String login() {
-        return "home/login";
-    }
+//    @RequestMapping("/")
+//    String home() {
+//        return "home/home";
+//    }
+//
+//    @GetMapping("/login")
+//    String login() {
+//        return "home/login";
+//    }
 
     @GetMapping("/register")
     String register(Model model) {
@@ -40,7 +41,7 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid UserDTO userToRegister, BindingResult errors) {
+    public String register(@Valid @ModelAttribute("userToRegister") UserDTO userToRegister, BindingResult errors) {
 
         if (!userService.isRegistrationSuccessful(userToRegister, errors)) {
             return "home/register";

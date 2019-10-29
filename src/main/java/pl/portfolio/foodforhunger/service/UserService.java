@@ -11,6 +11,7 @@ import pl.portfolio.foodforhunger.repository.RoleRepository;
 import pl.portfolio.foodforhunger.repository.UserRepository;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 

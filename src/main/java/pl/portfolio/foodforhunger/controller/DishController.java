@@ -14,6 +14,7 @@ import pl.portfolio.foodforhunger.utils.PageOfRows;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/dish")
@@ -40,6 +41,19 @@ public class DishController {
 
         model.addAttribute("dishPage", dishPageOfRows);
         return "dish/browser";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable Long id, Principal principal) {
+        Dish dishToDelete = dishService.getOne(id);
+        String loggedUserName = principal.getName();
+
+        if (loggedUserName.equals(dishToDelete.getUser().getUsername())) {
+            dishService.delete(dishService.getOne(id));
+            return "/user/profile/" + principal.getName();
+        }
+
+        return "/403";
     }
 
     //Method to get image of dish from DB
