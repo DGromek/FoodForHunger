@@ -6,12 +6,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import pl.portfolio.foodforhunger.entity.Role;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.utils.UserDTO;
+import pl.portfolio.foodforhunger.dto.UserDTO;
 import pl.portfolio.foodforhunger.repository.RoleRepository;
 import pl.portfolio.foodforhunger.repository.UserRepository;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -62,6 +63,18 @@ public class UserService {
         }
 
         return isOk && !errors.hasErrors();
+    }
+
+    public byte[] getUserAvatarByUserId(long id) throws IOException {
+        User user = getOne(id);
+        byte[] avatar = user.getAvatar();
+
+        //If user doesn't have avatar insert placeholder.
+        if (avatar == null) {
+            FileInputStream fileInputStream = new FileInputStream("src/main/resources/static/placeholders/placeholder.png");
+            avatar = fileInputStream.readAllBytes();
+        }
+        return avatar;
     }
 
 }

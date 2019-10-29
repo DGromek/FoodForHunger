@@ -1,4 +1,4 @@
-package pl.portfolio.foodforhunger.utils;
+package pl.portfolio.foodforhunger.dto;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Email;

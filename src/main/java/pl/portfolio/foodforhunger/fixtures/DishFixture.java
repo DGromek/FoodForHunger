@@ -23,6 +23,7 @@ public class DishFixture {
         dish1.setName("Ośmiorniczki z parówek");
         dish1.setDescription("Niesamowite, jedyne w swoim rodzaju owoce morza na studencką kieszeń!");
         dish1.setPrice(5.5);
+        dish1.setPortionSize(320);
         dish1.setCity("Łódź");
         dish1.setStreet("Piłsudskiego");
         dish1.setHouseNr("56");
@@ -33,7 +34,8 @@ public class DishFixture {
         Dish dish2 = new Dish();
         dish2.setName("Kurczak Curry");
         dish2.setDescription("Orientalny smak w niewygórowanej cenie. Spróbuj koniecznie! :)");
-        dish1.setPrice(10.5);
+        dish2.setPrice(10.5);
+        dish2.setPortionSize(400);
         dish2.setCity("Gdynia");
         dish2.setStreet("Aleja Armii Krajowej");
         dish2.setHouseNr("13");
@@ -45,6 +47,7 @@ public class DishFixture {
         dish3.setName("Makaron z szpinakiem");
         dish3.setDescription("Studencki klasyk w niewygórowanej cenie.");
         dish3.setPrice(4.2);
+        dish3.setPortionSize(250);
         dish3.setCity("Łódź");
         dish3.setStreet("Piotrkowska");
         dish3.setHouseNr("23");
@@ -56,6 +59,7 @@ public class DishFixture {
         dish4.setName("Makaron z serem");
         dish4.setDescription("Studencki klasyk obiadowy");
         dish4.setPrice(2.2);
+        dish4.setPortionSize(500);
         dish4.setCity("Łódź");
         dish4.setStreet("Piotrkowska");
         dish4.setHouseNr("66");

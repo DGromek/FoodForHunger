@@ -65,11 +65,6 @@ body, html {
     height: 40px;
 }
 
-#error-403-thumbnail {
-    width: 400px;
-    height: 225px;
-}
-
 .page-wrap {
     min-height: 100vh;
 }
@@ -94,6 +89,22 @@ body, html {
     height: 15px;
 }
 
+/* Card max sizes */
+
+.browser-card-size {
+    max-width: 350px;
+    height: 450px;
+}
+
+.profile-dish-card-size {
+    max-width: 510px;
+    height: 440px;
+}
+
+.profile-comment-card-size {
+    max-width: 508px;
+}
+
 .error-code {
     font-size: 200px;
 }
@@ -103,5 +114,5 @@ body, html {
 }
 
 .error-message {
-    color: darkred;
+    color: #bf0000;
 }

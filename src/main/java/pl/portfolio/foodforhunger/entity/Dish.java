@@ -1,9 +1,10 @@
 package pl.portfolio.foodforhunger.entity;
 
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "dish")
@@ -13,26 +14,33 @@ public class Dish {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotEmpty(message = "Nie może być puste!")
     private String name;
 
-    @NotNull
+    @NotEmpty(message = "Nie może być puste!")
     private String description;
 
+    @Column(columnDefinition="MEDIUMBLOB")
     private byte[] dishPicture;
 
-    @NotNull
+    @NotEmpty(message = "Nie może być puste!")
     private String city;
 
-    @NotNull
+    @NotEmpty(message = "Nie może być puste!")
     private String street;
 
-    @NotNull
+    @NotEmpty(message = "Nie może być puste!")
     private String houseNr;
 
-    @NotNull
+    private String flatNumber;
+
+    @NotNull(message = "Nie może byś puste!")
     @Min(0)
     private Double price;
+
+    @NotNull(message = "Nie może byś puste!")
+    @Min(0)
+    private Integer portionSize;
 
     @ManyToOne
     private User user;
@@ -65,6 +73,14 @@ public class Dish {
         this.description = description;
     }
 
+    public byte[] getDishPicture() {
+        return dishPicture;
+    }
+
+    public void setDishPicture(byte[] dishPicture) {
+        this.dishPicture = dishPicture;
+    }
+
     public String getCity() {
         return city;
     }
@@ -89,20 +105,12 @@ public class Dish {
         this.houseNr = houseNr;
     }
 
-    public User getUser() {
-        return user;
+    public String getFlatNumber() {
+        return flatNumber;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public byte[] getDishPicture() {
-        return dishPicture;
-    }
-
-    public void setDishPicture(byte[] dishPicture) {
-        this.dishPicture = dishPicture;
+    public void setFlatNumber(String flatNumber) {
+        this.flatNumber = flatNumber;
     }
 
     public Double getPrice() {
@@ -111,5 +119,21 @@ public class Dish {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Integer getPortionSize() {
+        return portionSize;
+    }
+
+    public void setPortionSize(Integer portionSize) {
+        this.portionSize = portionSize;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

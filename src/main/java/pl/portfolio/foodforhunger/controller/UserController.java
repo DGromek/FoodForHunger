@@ -16,7 +16,6 @@ import pl.portfolio.foodforhunger.service.UserService;
 import pl.portfolio.foodforhunger.utils.PageOfRows;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 
@@ -39,6 +38,10 @@ public class UserController {
     public String profile(@PathVariable String username, @PathVariable int dishPageIdx, @PathVariable int commentPageIdx, Model model) {
         User user = userService.findByUsername(username);
 
+        if (user == null) {
+            return "/error/404";
+        }
+
         Page<Dish> dishPage = dishService.findAllByUserId(user.getId(), dishPageIdx, 2);
         Page<Comment> commentPage = commentService.findAllByReceiverId(user.getId(), commentPageIdx, 4);
         PageOfRows<Comment> commentPageOfRows = new PageOfRows<>(commentPage, 2);
@@ -52,15 +55,7 @@ public class UserController {
     //Method to get avatar from DB
     @GetMapping("/getImage/{id}")
     public void getImage(@PathVariable long id, HttpServletResponse response) throws IOException {
-        User user = userService.getOne(id);
-        byte[] avatar = user.getAvatar();
-
-        //If user doesn't have avatar insert placeholder.
-        if (avatar == null) {
-            FileInputStream fileInputStream = new FileInputStream("src/main/resources/static/placeholders/placeholder.png");
-            avatar = fileInputStream.readAllBytes();
-        }
-
+        byte[] avatar = userService.getUserAvatarByUserId(id);
         response.getOutputStream().write(avatar);
     }
 }

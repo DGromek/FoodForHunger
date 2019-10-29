@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title></title>
+    <title>${user.username}</title>
 </head>
 
 <body>
@@ -46,14 +46,13 @@
                     <div class="row card-deck">
 
                         <c:forEach items="${dishPage.iterator()}" var="dish">
-                            <div class="card col-md-6 my-4 p-3 border shadow bg-light">
+                            <div class="card col-md-6 my-4 p-3 border shadow bg-light profile-dish-card-size">
                                 <img class="card-img-top img-fluid" src="https://placehold.it/100x45">
                                 <div class="card-body">
                                     <h5>${dish.name}</h5>
                                     <p class="card-text">
                                             ${dish.description}
                                     </p>
-
                                 </div>
                                 <div class="card-footer border-0 text-right bg-light">
                                     <form action="/dish/details/${dish.id}">
@@ -67,23 +66,15 @@
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
                             <c:if test="${dishPage.number eq 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
-                                        class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number - 1}/${commentPage.number}"
-                                        class="page-link">${dishPage.number}</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">${dishPage.number}</a></li>
                             </c:if>
 
                             <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
 
-                            <c:if test="${dishPagePage.number < dishPage.totalPages - 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
-                                        class="page-link">${dishPage.number + 2}</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.id}/${dishPage.number + 1}/${commentPage.number}"
-                                        class="page-link">&raquo;</a></li>
+                            <c:if test="${dishPage.number < dishPage.totalPages - 1}">
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">${dishPage.number + 2}</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">&raquo;</a></li>
                             </c:if>
                         </ul>
                     </nav>

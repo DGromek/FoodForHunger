@@ -33,22 +33,22 @@
             <div class="form-group" id="register-form">
                 <label>Podaj login</label>
                 <form:input class="form-control" path="username"/>
-                <small><form:errors class="alert alert-danger d-block form-text" path="username"/></small>
+                <small><form:errors class="error-message d-block form-text" path="username"/></small>
             </div>
             <div class="form-group">
                 <label>Podaj email</label>
                 <form:input class="form-control" type="email" path="email"/>
-                <small><form:errors class="alert alert-danger d-block form-text" path="email"/></small>
+                <small><form:errors class="error-message d-block form-text" path="email"/></small>
             </div>
             <div class="form-group">
                 <label>Podaj hasło</label>
                 <form:input value="" class="form-control" type="password" path="password" alt="password" id="password-1"/>
-                <small><form:errors class="alert alert-danger d-block form-text" path="password"/></small>
+                <small><form:errors class="error-message d-block form-text" path="password"/></small>
             </div>
             <div class="form-group">
                 <label>Powtórz hasło</label>
                 <form:input class="form-control" type="password" path="repeatedPassword" id="password-2"/>
-                <small><form:errors class="alert alert-danger d-block form-text" path="repeatedPassword"/></small>
+                <small><form:errors class="error-message d-block form-text" path="repeatedPassword"/></small>
             </div>
 
             <!-- Checkboxes -->
@@ -58,7 +58,7 @@
                     Akceptuje <a href="">regulamin serwisu</a>.
                 </label>
             </div>
-            <small><form:errors class="alert alert-danger d-block form-text" path="accepted"/></small>
+            <small><form:errors class="error-message d-block form-text" path="accepted"/></small>
 
             <!-- Submit button -->
             <form:button class="btn btn-primary btn-lg mt-4 px-4" type="submit">Wyślij</form:button>

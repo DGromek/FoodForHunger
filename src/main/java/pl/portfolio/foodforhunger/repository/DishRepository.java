@@ -21,9 +21,4 @@ public interface DishRepository extends JpaRepository<Dish, Long> {
 
     @Query("Select distinct d.city from Dish d")
     List<String> findAllCities();
-
-//    List<Dish> findAllOrderByIdAsc();
-
-//    List<Dish> findAllOrOrderByCity();
-//    List<Dish> findAllByOrderByCityDesc();
 }

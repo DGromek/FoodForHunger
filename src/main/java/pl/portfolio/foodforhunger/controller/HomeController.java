@@ -7,9 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.utils.UserDTO;
+import pl.portfolio.foodforhunger.dto.UserDTO;
 import pl.portfolio.foodforhunger.service.UserService;
 
 import javax.validation.Valid;
@@ -23,16 +22,6 @@ public class HomeController {
     public HomeController(UserService userService) {
         this.userService = userService;
     }
-
-//    @RequestMapping("/")
-//    String home() {
-//        return "home/home";
-//    }
-//
-//    @GetMapping("/login")
-//    String login() {
-//        return "home/login";
-//    }
 
     @GetMapping("/register")
     String register(Model model) {

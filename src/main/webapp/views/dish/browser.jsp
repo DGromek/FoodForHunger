@@ -106,9 +106,9 @@
 
     <!-- Results -->
     <c:forEach items="${dishPage.content}" var="row">
-            <div class="row card-deck py-2">
+            <div class="row card-deck py-3">
                 <c:forEach items="${row.content}" var="dish">
-                    <div class="card col-md-4 border-0 shadow pt-4">
+                    <div class="card col-md-4 border-0 shadow pt-4 browser-card-size">
                         <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
                         <div class="card-body px-1">
                             <h4 class="card-title">${dish.name}</h4>
@@ -116,7 +116,7 @@
                                     href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
                             <p class="card-text">${dish.description}</p>
                         </div>
-                        <div class="card-footer bg-transparent border-0 px-1 pb-2">
+                        <div class="card-footer bg-transparent border-0 px-1 pb-3">
                             <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
                         </div>
                     </div>
