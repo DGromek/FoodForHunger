@@ -1,6 +1,6 @@
 package pl.portfolio.foodforhunger.entity;
 
-import pl.portfolio.foodforhunger.dto.UserDTO;
+import pl.portfolio.foodforhunger.dto.RegisterUserDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -25,7 +25,7 @@ public class User {
     @Column(unique = true)
     private String username;
 
-    @Column(columnDefinition = "BLOB")
+    @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] avatar;
 
     @NotEmpty(message = "Email nie może być pusty.")
@@ -59,7 +59,7 @@ public class User {
     public User() {
     }
 
-    public User(UserDTO validatedUser) {
+    public User(RegisterUserDTO validatedUser) {
         this.username = validatedUser.getUsername();
         this.email = validatedUser.getEmail();
         this.password = validatedUser.getPassword();

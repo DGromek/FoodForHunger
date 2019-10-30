@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import pl.portfolio.foodforhunger.dto.UpdateUserDTO;
 import pl.portfolio.foodforhunger.entity.Comment;
 import pl.portfolio.foodforhunger.entity.Dish;
 import pl.portfolio.foodforhunger.entity.User;
@@ -16,7 +17,9 @@ import pl.portfolio.foodforhunger.service.UserService;
 import pl.portfolio.foodforhunger.utils.PageOfRows;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 
 
 @Controller
@@ -50,6 +53,26 @@ public class UserController {
         model.addAttribute("dishPage", dishPage);
         model.addAttribute("commentPage", commentPageOfRows);
         return "/user/profile";
+    }
+
+    @GetMapping("/update")
+    public String update(Principal principal, Model model) {
+        User loggedUser = userService.findByUsername(principal.getName());
+        UpdateUserDTO updateUserDTO = new UpdateUserDTO(loggedUser);
+        model.addAttribute("updateUserDTO", updateUserDTO);
+        return "/user/update";
+    }
+
+    @PostMapping("/update")
+    public String update(Principal principal, @Valid @ModelAttribute("updateUserDTO") UpdateUserDTO updateUserDTO, @RequestParam("avatar") MultipartFile avatar, BindingResult errors) throws IOException {
+        User loggedUser = userService.findByUsername(principal.getName());
+
+        if (!userService.isUpdateSuccessful(loggedUser, updateUserDTO, errors )) {
+            return "/user/update";
+        }
+
+        userService.update(loggedUser, updateUserDTO, avatar);
+        return "redirect:/user/profile/" + principal.getName() + "/0/0";
     }
 
     //Method to get avatar from DB

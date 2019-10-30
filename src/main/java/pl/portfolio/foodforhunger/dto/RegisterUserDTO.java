@@ -1,13 +1,14 @@
 package pl.portfolio.foodforhunger.dto;
 
 import javax.persistence.Column;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import static pl.portfolio.foodforhunger.entity.User.PASSWORD_MINIMUM_LENGTH;
 
-public class UserDTO {
+public class RegisterUserDTO {
 
     @NotEmpty(message = "Login nie może być pusty.")
     @Size(min = 5, max = 15, message = "Login musi mieć długość między 5 a 15 znaków.")
@@ -23,6 +24,7 @@ public class UserDTO {
 
     private String repeatedPassword;
 
+    @AssertTrue(message = "Musisz zaakceptować warunki użytkowania serwisu.")
     private boolean accepted;
 
     public String getUsername() {
@@ -65,6 +67,6 @@ public class UserDTO {
         this.accepted = accepted;
     }
 
-    public UserDTO() {
+    public RegisterUserDTO() {
     }
 }

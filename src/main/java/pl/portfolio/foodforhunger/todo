@@ -1,0 +1,18 @@
+1. Add "user/update".
+2. Use of Validators to validate (Username, Email @Unique, Password & RepeatedPassword, this whole mess when changing password)
+2. Add protection on frontend.
+3. Make SQL database fixture.
+4. Make complete CRUD for comments.
+5. Rest for pagination.
+6. Filtering
+7. Confirm register by email.
+
+Bugs:
+1. Add error handling on uploading images.
+2. Fix registration background bug.
+3. "dish/browser" responsiveness.
+4. Target folder on github.
+
+Far Future:
+1. Add messages system.
+2. Admin panel.

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.dto.UserDTO;
+import pl.portfolio.foodforhunger.dto.RegisterUserDTO;
 import pl.portfolio.foodforhunger.service.UserService;
 
 import javax.validation.Valid;
@@ -25,12 +25,12 @@ public class HomeController {
 
     @GetMapping("/register")
     String register(Model model) {
-        model.addAttribute("userToRegister", new UserDTO());
+        model.addAttribute("userToRegister", new RegisterUserDTO());
         return "home/register";
     }
 
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute("userToRegister") UserDTO userToRegister, BindingResult errors) {
+    public String register(@Valid @ModelAttribute("userToRegister") RegisterUserDTO userToRegister, BindingResult errors) {
 
         if (!userService.isRegistrationSuccessful(userToRegister, errors)) {
             return "home/register";

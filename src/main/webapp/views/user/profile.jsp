@@ -11,13 +11,18 @@
 
 <div class="container p-4 my-4 bg-page shadow rounded">
     <div class="row">
-        <div class="col-4 col-md-3 col-lg-2 px-2">
+        <div class="col-md-3 col-lg-2 pb-2 px-2 d-flex justify-content-center">
             <img src="/user/getImage/${user.id}" id="user-avatar" class="img-fluid">
         </div>
-
-        <!-- Header -->
-        <div class="col-8 col-md-9 col-lg-10 align-self-center">
-            <h2>${user.username}</h2>
+        <div class="col-md-9 col-lg-10">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="m-0">${user.username}</h2>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <button class="btn btn-primary" onclick="window.location.href='/user/update'">Zaktualizuj</button>
+                </div>
+            </div>
             <hr>
             <p>${user.description}</p>
         </div>
@@ -66,15 +71,23 @@
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
                             <c:if test="${dishPage.number eq 1}">
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">${dishPage.number}</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}"
+                                        class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}"
+                                        class="page-link">${dishPage.number}</a></li>
                             </c:if>
 
                             <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
 
                             <c:if test="${dishPage.number < dishPage.totalPages - 1}">
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">${dishPage.number + 2}</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">&raquo;</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}"
+                                        class="page-link">${dishPage.number + 2}</a></li>
+                                <li class="page-item"><a
+                                        href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}"
+                                        class="page-link">&raquo;</a></li>
                             </c:if>
                         </ul>
                     </nav>
