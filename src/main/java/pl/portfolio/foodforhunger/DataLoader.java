@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-import pl.portfolio.foodforhunger.entity.Role;
-import pl.portfolio.foodforhunger.fixtures.CommentFixture;
-import pl.portfolio.foodforhunger.fixtures.DishFixture;
-import pl.portfolio.foodforhunger.fixtures.RoleFixture;
-import pl.portfolio.foodforhunger.fixtures.UserFixture;
+import pl.portfolio.foodforhunger.fixture.CommentFixture;
+import pl.portfolio.foodforhunger.fixture.DishFixture;
+import pl.portfolio.foodforhunger.fixture.RoleFixture;
+import pl.portfolio.foodforhunger.fixture.UserFixture;
 
 @Component
 public class DataLoader implements ApplicationRunner {

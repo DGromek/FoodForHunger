@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<sec:authentication var="loggedUser" property="principal.username"/>
 
 <html>
 <head>
@@ -8,6 +10,7 @@
 <body>
 
 <%@ include file="../core/header.jsp" %>
+
 <!-- Content -->
 <div class="container p-4 my-4 bg-page shadow rounded">
     <div class="row">
@@ -22,11 +25,18 @@
     <p>${dish.description}</p>
 
     <div class="text-right">
-        <span class="pr-2">Portion: 400g</span>
+        <span class="pr-2">Portion: ${dish.portionSize}g</span>
         <span class="pr-3">Price: ${dish.price} zł</span>
-        <button class="btn btn-success">Kup teraz!</button>
-        <button class="btn btn-warning">Edytuj</button>
-        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteDishModal">Usuń danie</button>
+        <c:choose>
+            <c:when test="${loggedUser eq dish.user.username}">
+                <button class="btn btn-warning">Edytuj</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteDishModal">Usuń danie</button>
+            </c:when>
+
+            <c:otherwise>
+                <button class="btn btn-success">Kup teraz!</button>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 

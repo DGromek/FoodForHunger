@@ -1,5 +1,4 @@
-1. Add "user/update".
-2. Use of Validators to validate (Username, Email @Unique, Password & RepeatedPassword, this whole mess when changing password)
+1. Use of Validators to validate (Username, Email @Unique, Password & RepeatedPassword, this whole mess when changing password)
 2. Add protection on frontend.
 3. Make SQL database fixture.
 4. Make complete CRUD for comments.

@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<sec:authentication var="loggedUser" property="principal.username"/>
 <html>
 
 <head>
@@ -7,6 +9,7 @@
 </head>
 
 <body>
+
 <%@ include file="../core/header.jsp" %>
 
 <div class="container p-4 my-4 bg-page shadow rounded">
@@ -20,7 +23,9 @@
                     <h2 class="m-0">${user.username}</h2>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
+                    <c:if test="${loggedUser eq user.username}">
                     <button class="btn btn-primary" onclick="window.location.href='/user/update'">Zaktualizuj</button>
+                    </c:if>
                 </div>
             </div>
             <hr>

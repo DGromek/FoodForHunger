@@ -1,11 +1,10 @@
-package pl.portfolio.foodforhunger.fixtures;
+package pl.portfolio.foodforhunger.fixture;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.portfolio.foodforhunger.entity.Role;
 import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.repository.RoleRepository;
-import pl.portfolio.foodforhunger.repository.UserRepository;
 import pl.portfolio.foodforhunger.service.UserService;
 
 import java.io.FileInputStream;

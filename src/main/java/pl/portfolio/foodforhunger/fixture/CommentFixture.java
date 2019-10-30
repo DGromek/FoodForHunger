@@ -1,4 +1,4 @@
-package pl.portfolio.foodforhunger.fixtures;
+package pl.portfolio.foodforhunger.fixture;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
