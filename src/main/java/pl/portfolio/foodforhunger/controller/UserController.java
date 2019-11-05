@@ -37,20 +37,20 @@ public class UserController {
         this.commentService = commentService;
     }
 
-    @GetMapping("/profile/{username}/{dishPageIdx}/{commentPageIdx}")
-    public String profile(@PathVariable String username, @PathVariable int dishPageIdx, @PathVariable int commentPageIdx, Model model) {
+    @GetMapping("/profile/{username}")
+    public String profile(@PathVariable String username, Model model) {
         User user = userService.findByUsername(username);
 
         if (user == null) {
             return "/error/404";
         }
 
-        Page<Dish> dishPage = dishService.findAllByUserId(user.getId(), dishPageIdx, 2);
-        Page<Comment> commentPage = commentService.findAllByReceiverIdOrderByCreatedDesc(user.getId(), commentPageIdx, 4);
+        //Page<Dish> dishPage = dishService.findAllByUserId(user.getId(), 0, 2);
+        Page<Comment> commentPage = commentService.findAllByReceiverIdOrderByCreatedDesc(user.getId(), 0, 4);
         PageOfRows<Comment> commentPageOfRows = new PageOfRows<>(commentPage, 2);
 
         model.addAttribute("user", user);
-        model.addAttribute("dishPage", dishPage);
+        //model.addAttribute("dishPage", dishPage);
         model.addAttribute("commentPage", commentPageOfRows);
         return "/user/profile";
     }

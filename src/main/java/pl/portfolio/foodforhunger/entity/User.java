@@ -1,5 +1,6 @@
 package pl.portfolio.foodforhunger.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import pl.portfolio.foodforhunger.dto.RegisterUserDTO;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -45,12 +46,15 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "author")
     private List<Comment> authorComments = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "receiver")
     private List<Comment> receiverComments = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "user")
     private List<Dish> dishes = new ArrayList<>();
 

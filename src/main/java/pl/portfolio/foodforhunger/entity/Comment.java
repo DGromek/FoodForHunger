@@ -1,5 +1,6 @@
 package pl.portfolio.foodforhunger.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -20,9 +21,11 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @JsonManagedReference
     @ManyToOne
     private User author;
 
+    @JsonManagedReference
     @ManyToOne
     private User receiver;
 

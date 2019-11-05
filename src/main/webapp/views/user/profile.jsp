@@ -8,7 +8,7 @@
     <title>${user.username}</title>
 </head>
 
-<body>
+<body onload="getProfileDishPage('${user.username}', 0)">
 
 <%@ include file="../core/header.jsp" %>
 
@@ -53,46 +53,22 @@
 
                 <!-- Dishes section -->
                 <div class="tab-pane fade show active" id="dishes" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="row card-deck">
-
-                        <c:forEach items="${dishPage.iterator()}" var="dish">
-                            <div class="card col-md-6 my-4 p-3 border shadow bg-light profile-dish-card-size">
-                                <img class="card-img-top img-fluid" src="https://placehold.it/100x45">
-                                <div class="card-body">
-                                    <h5>${dish.name}</h5>
-                                    <p class="card-text">
-                                            ${dish.description}
-                                    </p>
-                                </div>
-                                <div class="card-footer border-0 text-right bg-light">
-                                    <form action="/dish/details/${dish.id}">
-                                        <button type="submit" class="btn btn-info btn-sm">Szczegóły</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </c:forEach>
+                    <div class="row card-deck" id="dish-display">
+                        <!-- Here goes data from getProfileDishPage script -->
                     </div>
 
                     <nav>
                         <ul class="pagination pagination-sm justify-content-center">
                             <c:if test="${dishPage.number eq 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}"
-                                        class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}"
-                                        class="page-link">${dishPage.number}</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">${dishPage.number}</a></li>
                             </c:if>
 
                             <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
 
                             <c:if test="${dishPage.number < dishPage.totalPages - 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}"
-                                        class="page-link">${dishPage.number + 2}</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}"
-                                        class="page-link">&raquo;</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">${dishPage.number + 2}</a></li>
+                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">&raquo;</a></li>
                             </c:if>
                         </ul>
                     </nav>
@@ -170,6 +146,7 @@
 </div>
 
 <%@ include file="../core/footer.jsp" %>
+<script src="../../js/getProfileDishPage.js"></script>
 
 </body>
 </html>

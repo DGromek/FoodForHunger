@@ -42,7 +42,7 @@ body, html {
     object-fit: cover;
 }
 
-#dish-profile-thumbnail {
+.dish-profile-thumbnail {
     width: 475px;
     height: 215px;
     object-fit: cover;

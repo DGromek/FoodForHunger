@@ -98,7 +98,6 @@
     <div class="card-deck my-3">
         <!-- Results -->
         <c:forEach items="${dishPage.content}" var="row">
-
             <c:forEach items="${row.content}" var="dish" varStatus="iterator">
                 <div class="p-4 mb-3 card border-0 shadow browser-card-size">
                     <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
