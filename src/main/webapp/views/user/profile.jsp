@@ -125,10 +125,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body pb-0">
                                         <div class="card-text">
                                             <p>${comment.content}</p>
                                         </div>
+                                    </div>
+                                    <div class="card-footer border-0 bg-light pt-0">
+                                        <small>Dodano: ${comment.created}</small>
                                     </div>
                                 </div>
                             </c:forEach>

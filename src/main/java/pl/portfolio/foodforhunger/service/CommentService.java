@@ -44,11 +44,7 @@ public class CommentService {
         return commentRepository.findAllByReceiverId(receiverId, PageRequest.of(pageId, size));
     }
 
-    public boolean isAuthor(Comment commentToDelete, User loggedUser) {
-        if (loggedUser.getId().equals(commentToDelete.getAuthor().getId())) {
-            return true;
-        } else {
-            return false;
-        }
+    public Page<Comment> findAllByReceiverIdOrderByCreatedDesc(Long receiverId, int pageId, int size) {
+        return commentRepository.findAllByReceiverIdOrderByCreatedDesc(receiverId, PageRequest.of(pageId, size));
     }
 }

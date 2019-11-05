@@ -13,7 +13,6 @@ import pl.portfolio.foodforhunger.repository.RoleRepository;
 import pl.portfolio.foodforhunger.repository.UserRepository;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashSet;
@@ -40,6 +39,10 @@ public class UserService {
 
     public User findByUsername(String username) {
        return userRepository.findByUsername(username);
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public User save(User user) {
@@ -119,5 +122,4 @@ public class UserService {
         }
         return avatar;
     }
-
 }

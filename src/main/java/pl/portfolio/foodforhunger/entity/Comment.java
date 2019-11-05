@@ -3,6 +3,7 @@ package pl.portfolio.foodforhunger.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,7 +27,7 @@ public class Comment {
     private User receiver;
 
     @NotNull
-    private LocalDateTime created;
+    private LocalDate created;
 
     public Comment() {
     }
@@ -71,11 +72,11 @@ public class Comment {
         this.receiver = receiver;
     }
 
-    public LocalDateTime getCreated() {
+    public LocalDate getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(LocalDate created) {
         this.created = created;
     }
 }

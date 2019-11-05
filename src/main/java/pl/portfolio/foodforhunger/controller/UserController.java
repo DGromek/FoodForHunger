@@ -46,7 +46,7 @@ public class UserController {
         }
 
         Page<Dish> dishPage = dishService.findAllByUserId(user.getId(), dishPageIdx, 2);
-        Page<Comment> commentPage = commentService.findAllByReceiverId(user.getId(), commentPageIdx, 4);
+        Page<Comment> commentPage = commentService.findAllByReceiverIdOrderByCreatedDesc(user.getId(), commentPageIdx, 4);
         PageOfRows<Comment> commentPageOfRows = new PageOfRows<>(commentPage, 2);
 
         model.addAttribute("user", user);

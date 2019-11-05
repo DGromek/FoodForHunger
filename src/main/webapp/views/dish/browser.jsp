@@ -16,8 +16,6 @@
                  aria-label="Toolbar with button groups">
 
                 <!-- Dropdown allergens -->
-
-
                 <div class="btn-group col-sm-4 col-lg-2 mt-3">
                     <button class="btn btn-info dropdown-toggle" role="button" id="dropdownAllergens"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rodzaj diety
@@ -97,25 +95,32 @@
         </form>
     </nav>
 
-    <!-- Results -->
-    <c:forEach items="${dishPage.content}" var="row">
-            <div class="row card-deck py-3">
-                <c:forEach items="${row.content}" var="dish">
-                    <div class="card col-md-4 border-0 shadow pt-4 browser-card-size">
-                        <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
-                        <div class="card-body px-1">
-                            <h4 class="card-title">${dish.name}</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">By <a
-                                    href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
-                            <p class="card-text">${dish.description}</p>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 px-1 pb-3">
-                            <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
-                        </div>
+    <div class="card-deck my-3">
+        <!-- Results -->
+        <c:forEach items="${dishPage.content}" var="row">
+
+            <c:forEach items="${row.content}" var="dish" varStatus="iterator">
+                <div class="p-4 mb-3 card border-0 shadow browser-card-size">
+                    <img class="card-img-top img-fluid" src="/dish/getImage/${dish.id}" id="browser-dish-thumbnail">
+                    <div class="card-body px-1">
+                        <h4 class="card-title">${dish.name}</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">By <a
+                                href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
+                        <p class="card-text">${dish.description}</p>
                     </div>
-                </c:forEach>
-            </div>
-    </c:forEach>
+                    <div class="card-footer bg-transparent border-0 px-1 pb-3">
+                        <a href="/dish/details/${dish.id}" class="btn btn-info">Zobacz więcej!</a>
+                    </div>
+                </div>
+                <c:if test="${iterator.count eq 2}">
+                    <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>
+                    <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 2 on md--></div>
+                </c:if>
+            </c:forEach>
+            <div class="w-100 d-none d-lg-block d-xl-none"><!-- wrap every 3 on lg--></div>
+            <div class="w-100 d-none d-xl-block"><!-- wrap every 3 on xl--></div>
+        </c:forEach>
+    </div>
 
 </div>
 
@@ -124,13 +129,15 @@
     <ul class="pagination justify-content-center pb-4">
         <c:if test="${dishPage.number eq 1}">
             <li class="page-item"><a href="/dish/browser/0" class="page-link">&laquo;</a></li>
-            <li class="page-item"><a href="/dish/browser/${dishPage.number - 1}" class="page-link">${dishPage.number}</a></li>
+            <li class="page-item"><a href="/dish/browser/${dishPage.number - 1}"
+                                     class="page-link">${dishPage.number}</a></li>
         </c:if>
 
         <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
 
         <c:if test="${dishPage.number < dishPage.totalPages - 1}">
-            <li class="page-item"><a href="/dish/browser/${dishPage.number + 1}" class="page-link">${dishPage.number + 2}</a></li>
+            <li class="page-item"><a href="/dish/browser/${dishPage.number + 1}"
+                                     class="page-link">${dishPage.number + 2}</a></li>
             <li class="page-item"><a href="/dish/browser/${dishPage.totalPages - 1}" class="page-link">&raquo;</a></li>
         </c:if>
     </ul>
