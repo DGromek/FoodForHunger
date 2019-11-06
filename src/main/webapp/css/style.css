@@ -34,6 +34,10 @@ body, html {
     background-color: rgb(230, 240, 255);
 }
 
+.page-item:hover {
+    cursor: pointer;
+}
+
 /* Page images sizes */
 
 #dish-details-thumbnail {
@@ -112,6 +116,8 @@ body, html {
 .profile-comment-card-size {
     max-width: 508px;
 }
+
+/* Errors */
 
 .error-code {
     font-size: 200px;

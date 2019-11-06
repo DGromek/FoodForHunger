@@ -58,18 +58,8 @@
                     </div>
 
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center">
-                            <c:if test="${dishPage.number eq 1}">
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}" class="page-link">${dishPage.number}</a></li>
-                            </c:if>
-
-                            <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
-
-                            <c:if test="${dishPage.number < dishPage.totalPages - 1}">
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">${dishPage.number + 2}</a></li>
-                                <li class="page-item"><a href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}" class="page-link">&raquo;</a></li>
-                            </c:if>
+                        <ul class="pagination pagination-sm justify-content-center" id="dish-browser-pagination">
+                            <!-- Here goes data from getProfileDishPage script -->
                         </ul>
                     </nav>
 
