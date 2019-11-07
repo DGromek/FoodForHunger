@@ -1,7 +1,6 @@
 package pl.portfolio.foodforhunger.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,11 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.portfolio.foodforhunger.entity.Dish;
 import pl.portfolio.foodforhunger.service.DishService;
-import pl.portfolio.foodforhunger.utils.PageOfRows;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.Principal;
 
@@ -35,12 +32,8 @@ public class DishController {
         return "dish/details";
     }
 
-    @RequestMapping("/browser/{dishPageIdx}")
-    public String browser(Model model, @PathVariable int dishPageIdx) {
-        Page<Dish> dishPage = dishService.findAll(dishPageIdx, 9);
-        PageOfRows<Dish> dishPageOfRows = new PageOfRows<>(dishPage, 3);
-
-        model.addAttribute("dishPage", dishPageOfRows);
+    @RequestMapping("/browser")
+    public String browser() {
         return "dish/browser";
     }
 
@@ -51,7 +44,7 @@ public class DishController {
 
         if (loggedUserName.equals(dishToDelete.getUser().getUsername())) {
             dishService.delete(dishToDelete);
-            return "redirect:/user/profile/" + principal.getName() + "/0/0";
+            return "redirect:/user/profile/" + principal.getName();
         }
         return "/403";
     }
@@ -69,7 +62,7 @@ public class DishController {
             return "/dish/add";
         }
         dishService.save(dishToAdd, dishPhoto, loggedUserUsername);
-        return "redirect:/user/profile/" + loggedUserUsername + "/0/0";
+        return "redirect:/user/profile/" + loggedUserUsername;
     }
 
     //Method to get image of dish from DB

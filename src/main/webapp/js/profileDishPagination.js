@@ -30,7 +30,7 @@ function profileDishPagination(username, pageIdx) {
             for (let i = 0; i < 2; i++) {
                 if (i < dishes.length) {
                     dishDisplay.append(
-                        '<div class="card col-md-6 my-4 p-3 border shadow bg-light profile-dish-card-size">' +
+                        '<div class="card my-4 p-3 border shadow bg-light">' +
                         '<img class="card-img-top img-fluid dish-profile-thumbnail" src="/dish/getImage/' + dishes[i].id + '">' +
                         '<div class="card-body pb-0">' +
                         '<h5>' + dishes[i].name + '</h5>' +

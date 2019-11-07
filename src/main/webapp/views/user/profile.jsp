@@ -54,11 +54,11 @@
                 <!-- Dishes section -->
                 <div class="tab-pane fade show active" id="dishes" role="tabpanel" aria-labelledby="home-tab">
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center mb-0" id="dish-browser-pagination">
+                        <ul class="pagination pagination-sm justify-content-center mb-0" id="dish-display-pagination">
                             <!-- Here goes data from profileDishPagination script -->
                         </ul>
                     </nav>
-                    <div class="row card-deck" id="dish-display">
+                    <div class="card-deck" id="dish-display">
                         <!-- Here goes data from profileDishPagination script -->
                     </div>
                 </div>
@@ -67,12 +67,12 @@
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
                     <!-- Comments paggination -->
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center mb-0" id="comment-browser-pagination">
+                        <ul class="pagination pagination-sm justify-content-center mb-0" id="comment-display-pagination">
                             <!-- Here goes data from profileCommentPagination script -->
                         </ul>
                     </nav>
                     <!-- Comments content -->
-                    <div class="row card-deck" id="comments-display">
+                    <div class="card-deck" id="comment-display">
                         <!-- Here goes data from profileCommentPagination script -->
                     </div>
                 </div>

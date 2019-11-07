@@ -1,20 +1,14 @@
 package pl.portfolio.foodforhunger.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.portfolio.foodforhunger.dto.UpdateUserDTO;
-import pl.portfolio.foodforhunger.entity.Comment;
-import pl.portfolio.foodforhunger.entity.Dish;
 import pl.portfolio.foodforhunger.entity.User;
-import pl.portfolio.foodforhunger.service.CommentService;
-import pl.portfolio.foodforhunger.service.DishService;
 import pl.portfolio.foodforhunger.service.UserService;
-import pl.portfolio.foodforhunger.utils.PageOfRows;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -27,14 +21,10 @@ import java.security.Principal;
 public class UserController {
 
     private UserService userService;
-    private DishService dishService;
-    private CommentService commentService;
 
     @Autowired
-    public UserController(UserService userService, DishService dishService, CommentService commentService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.dishService = dishService;
-        this.commentService = commentService;
     }
 
     @GetMapping("/profile/{username}")
@@ -45,13 +35,7 @@ public class UserController {
             return "/error/404";
         }
 
-        //Page<Dish> dishPage = dishService.findAllByUserId(user.getId(), 0, 2);
-        Page<Comment> commentPage = commentService.findAllByReceiverIdOrderByCreatedDesc(user.getId(), 0, 4);
-        PageOfRows<Comment> commentPageOfRows = new PageOfRows<>(commentPage, 2);
-
         model.addAttribute("user", user);
-        //model.addAttribute("dishPage", dishPage);
-        model.addAttribute("commentPage", commentPageOfRows);
         return "/user/profile";
     }
 
@@ -72,7 +56,7 @@ public class UserController {
         }
 
         userService.update(loggedUser, updateUserDTO, avatar);
-        return "redirect:/user/profile/" + principal.getName() + "/0/0";
+        return "redirect:/user/profile/" + principal.getName();
     }
 
     //Method to get avatar from DB

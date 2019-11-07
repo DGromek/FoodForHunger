@@ -89,34 +89,6 @@ body, html {
     height: 15px;
 }
 
-/* Card max sizes */
-
-.browser-card-size {
-    max-width: 350px;
-    height: 450px;
-}
-
-@media (max-width: 574px) {
-    .browser-card-size {
-        margin-left: auto;
-        margin-right: auto;
-        /*max-width: 500px;*/
-    }
-}
-
-/*.profile-dish-card-size {*/
-/*    height: 440px;*/
-/*}*/
-
-/*@media (min-width: 768px) {*/
-/*    .browser-card-size {*/
-/*        max-width: 46%;*/
-/*    }*/
-/*}*/
-
-/*.profile-comment-card-size {*/
-/*    max-width: 508px;*/
-/*}*/
 
 @media (min-width: 768px) {
     .hidden-block {

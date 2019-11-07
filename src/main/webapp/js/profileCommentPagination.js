@@ -1,6 +1,6 @@
 function profileCommentPagination(username, pageIdx) {
-    const commentDisplay = $('#comments-display');
-    const commentPagination = $('#comment-browser-pagination');
+    const commentDisplay = $('#comment-display');
+    const commentPagination = $('#comment-display-pagination');
 
     $.ajax({
         url: 'http://localhost:8080/rest/getProfileComments/' + username + '/' + pageIdx,
@@ -31,7 +31,7 @@ function profileCommentPagination(username, pageIdx) {
             for (let i = 0; i < 4; i++) {
                 if ( i < comments.length) {
                     commentDisplay.append(
-                        '<div class="card col-md-6 my-3 border shadow bg-light rounded p-0">' +
+                        '<div class="card my-3 border shadow bg-light rounded p-0">' +
                         '<div class="card-header">' +
                         '<div class="row">' +
                         '<div class="px-2">' +

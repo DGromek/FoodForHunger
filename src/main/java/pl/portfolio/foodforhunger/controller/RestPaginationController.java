@@ -12,7 +12,6 @@ import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.service.CommentService;
 import pl.portfolio.foodforhunger.service.DishService;
 import pl.portfolio.foodforhunger.service.UserService;
-import pl.portfolio.foodforhunger.utils.PageOfRows;
 
 @RestController
 @RequestMapping("/rest")
@@ -38,8 +37,11 @@ public class RestPaginationController {
     @GetMapping("/getProfileComments/{username}/{pageIdx}")
     public Page<Comment> getProfileComments(@PathVariable String username, @PathVariable int pageIdx) {
         User user = userService.findByUsername(username);
-//        Page<Comment> commentPage = commentService.findAllByReceiverIdOrderByCreatedDesc(user.getId(), pageIdx, 4);
-//        return new PageOfRows<>(commentPage, 2);
         return commentService.findAllByReceiverIdOrderByCreatedDesc(user.getId(), pageIdx, 4);
+    }
+
+    @GetMapping("/getBrowserResults/{pageIdx}")
+    public Page<Dish> getBrowserResults(@PathVariable int pageIdx) {
+        return dishService.findAll(pageIdx, 9);
     }
 }
