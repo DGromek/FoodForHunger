@@ -50,16 +50,12 @@ function dishBrowserPagination(pageIdx) {
 
                 if ((i + 1) % 2 === 0) {
                 browserResults.append(
-                        '<div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>' +
-                        '<div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 2 on md--></div>'
-                    );
+                        '<div class="w-100 d-none d-sm-block d-md-block d-lg-none"><!-- wrap every 2 on sm and md--></div>');
                 }
 
                 if ((i + 1) % 3 === 0) {
                     browserResults.append(
-                        '<div class="w-100 d-none d-lg-block d-xl-none"><!-- wrap every 3 on lg--></div>' +
-                        '<div class="w-100 d-none d-xl-block"><!-- wrap every 3 on xl--></div>'
-                    );
+                        '<div class="w-100 d-none d-lg-block d-xl-block"><!-- wrap every 3 on lg and xl--></div>');
                 }
             }
         })

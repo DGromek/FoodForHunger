@@ -1,4 +1,4 @@
-function profileCommentPagination(username, pageIdx) {
+function profileCommentPagination(username, pageIdx, loggedUser) {
     const commentDisplay = $('#comment-display');
     const commentPagination = $('#comment-display-pagination');
 
@@ -8,20 +8,23 @@ function profileCommentPagination(username, pageIdx) {
         dataType: 'json'
     })
         .done(function (commentPage) {
+
+            console.log(loggedUser);
+
             //Generating pagination
             commentPagination.empty();
             if (commentPage.number !== 0) {
                 commentPagination.append(
-                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + 0 + ')" class="page-link">&laquo;</a></li>' +
-                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + (commentPage.number - 1) + ')" class="page-link">' + commentPage.number + '</a></li>'
+                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + 0 + ',' + '\'' + loggedUser + '\')" class="page-link">&laquo;</a></li>' +
+                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + (commentPage.number - 1) + ',' + '\'' + loggedUser + '\')" class="page-link">' + commentPage.number + '</a></li>'
                 );
             }
             commentPagination.append('<li class="page-item active"><a class="page-link">' + (commentPage.number + 1) + '</a></li>');
 
             if (commentPage.number < commentPage.totalPages - 1) {
                 commentPagination.append(
-                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + (commentPage.number + 1) + ')" class="page-link">' + (commentPage.number + 2) + '</a></li>' +
-                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + (commentPage.totalPages - 1) + ')" class="page-link">&raquo;</a></li>');
+                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + (commentPage.number + 1) + ',' + '\'' + loggedUser + '\')" class="page-link">' + (commentPage.number + 2) + '</a></li>' +
+                    '<li class="page-item"><a onclick="profileCommentPagination(\'' + username + '\',' + (commentPage.totalPages - 1) + ',' + '\'' + loggedUser + '\')" class="page-link">&raquo;</a></li>');
             }
 
             //Generating divs with content
@@ -50,9 +53,16 @@ function profileCommentPagination(username, pageIdx) {
                         '       </div>' +
                         '   </div>' +
                         '   <div class="card-footer border-0 bg-light pt-0">' +
-                        '       <small>Dodano: ' + comments[i].created + '</small>' +
+                        '       <div class="row">' +
+                        '           <div class="col">' +
+                        '               <small>Dodano: ' + comments[i].created + '</small>' +
+                        '           </div>' +
+                        '           <div class="col text-right" id="comment-footer-' + i + '">' +
+                        '               <small><a href="">Edytuj</a>  <a href="" data-toggle="modal" data-target="#deleteCommentModal" data-id="' + comments[i].id + '">Usuń</a></small>' +
+                        '           </div>' +
+                        '       </div>' +
                         '   </div>' +
-                        '</div>').hide().fadeIn(250);
+                        '</div>');
 
                     let rating = $('#rating-' + i);
                     for (let j = 0; j < 5; j++) {
@@ -62,6 +72,11 @@ function profileCommentPagination(username, pageIdx) {
                             rating.append('<i class="fa fa-star-o"></i>');
                         }
                     }
+
+                    let commentFooter = $('#comment-footer-' + i);
+                    if (comments[i].author.username !== loggedUser) {
+                        commentFooter.css("display", "none")
+                    }
                 } else {
                     commentDisplay.append('<div class="col-md-6 my-3 p-0 hidden-block"></div>')
                     if (comments.length < 3) {
@@ -70,10 +85,7 @@ function profileCommentPagination(username, pageIdx) {
                 }
                 if ( i === 1) {
                     commentDisplay.append(
-                        '<div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>' +
-                        '<div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 2 on md--></div>' +
-                        '<div class="w-100 d-none d-lg-block d-xl-none"><!-- wrap every 2 on lg--></div>' +
-                        '<div class="w-100 d-none d-xl-block"><!-- wrap every 2 on xl--></div>');
+                        '<div class="w-100 d-block"><!-- wrap every 2 to make responsive--></div>');
                 }
             }
         })
@@ -81,5 +93,3 @@ function profileCommentPagination(username, pageIdx) {
             console.log("Niepowiodło się")
         })
 }
-
-

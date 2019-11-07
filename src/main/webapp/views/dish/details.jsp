@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title></title>
+    <title>${dish.name} by ${dish.user.username}</title>
 </head>
 <body>
 

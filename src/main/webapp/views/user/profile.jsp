@@ -7,8 +7,7 @@
 <head>
     <title>${user.username}</title>
 </head>
-
-<body onload="profileDishPagination('${user.username}', 0); profileCommentPagination('${user.username}', 0)">
+<body onload="profileDishPagination('${user.username}', 0); profileCommentPagination('${user.username}', 0, '${loggedUser}')">
 
 <%@ include file="../core/header.jsp" %>
 
@@ -81,9 +80,39 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="deleteCommentModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <!-- Exit button -->
+                <button type="button" class="close pb-3" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Content -->
+                <h5 class="py-2">Jesteś pewien?</h5>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success" data-dismiss="modal" aria-label="Close">Anuluj</button>
+                    <button class="btn btn-danger ml-1" id="delete-button">Usuń</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <%@ include file="../core/footer.jsp" %>
 <script src="../../js/profileDishPagination.js"></script>
 <script src="../../js/profileCommentPagination.js"></script>
+
+<%--<script>--%>
+<%--   $('#deleteCommentModal').on('show.bs.modal', function() {--%>
+<%--       let button = $(event.relatedTarget);--%>
+<%--       let recipient = button.data('id');--%>
+<%--       $('#delete-button').attr("onclick", window.location.href = '/comment/delete/' + recipient);--%>
+<%--   })--%>
+<%--</script>--%>
 
 </body>
 </html>
