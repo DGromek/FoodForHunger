@@ -8,7 +8,7 @@
     <title>${user.username}</title>
 </head>
 
-<body onload="getProfileDishPage('${user.username}', 0)">
+<body onload="profileDishPagination('${user.username}', 0); profileCommentPagination('${user.username}', 0)">
 
 <%@ include file="../core/header.jsp" %>
 
@@ -53,82 +53,28 @@
 
                 <!-- Dishes section -->
                 <div class="tab-pane fade show active" id="dishes" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="row card-deck" id="dish-display">
-                        <!-- Here goes data from getProfileDishPage script -->
-                    </div>
-
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center" id="dish-browser-pagination">
-                            <!-- Here goes data from getProfileDishPage script -->
+                        <ul class="pagination pagination-sm justify-content-center mb-0" id="dish-browser-pagination">
+                            <!-- Here goes data from profileDishPagination script -->
                         </ul>
                     </nav>
-
+                    <div class="row card-deck" id="dish-display">
+                        <!-- Here goes data from profileDishPagination script -->
+                    </div>
                 </div>
 
                 <!-- Comments section -->
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
-                    <c:forEach items="${commentPage.content}" var="row">
-                        <div class="row card-deck">
-                            <c:forEach items="${row.content}" var="comment">
-                                <div class="card col-md-6 my-3 border shadow bg-light rounded p-0">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="px-2">
-                                                <img src="/user/getImage/${comment.author.id}"
-                                                     class="img-fluid rounded-circle pr-1"
-                                                     id="user-avatar-thumbnail">
-                                            </div>
-                                            <div class="col m-auto p-0">
-                                                <a href="/user/profile/${comment.author.username}/0/0">${comment.author.username}</a>
-                                            </div>
-                                            <div class="col m-auto text-right">
-                                                <c:forEach step="1" begin="1" end="${comment.rating}">
-                                                    <i class="fa fa-star"></i>
-                                                </c:forEach>
-                                                <c:forEach step="1" begin="1" end="${5 - comment.rating}">
-                                                    <i class="fa fa-star-o"></i>
-                                                </c:forEach>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        <div class="card-text">
-                                            <p>${comment.content}</p>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer border-0 bg-light pt-0">
-                                        <small>Dodano: ${comment.created}</small>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </c:forEach>
-
                     <!-- Comments paggination -->
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center">
-                            <c:if test="${commentPage.number eq 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}"
-                                        class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}"
-                                        class="page-link">${commentPage.number}</a></li>
-                            </c:if>
-
-                            <li class="page-item active"><a class="page-link">${commentPage.number + 1}</a></li>
-
-                            <c:if test="${commentPage.number < commentPage.totalPages - 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}"
-                                        class="page-link">${commentPage.number + 2}</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}"
-                                        class="page-link">&raquo;</a></li>
-                            </c:if>
+                        <ul class="pagination pagination-sm justify-content-center mb-0" id="comment-browser-pagination">
+                            <!-- Here goes data from profileCommentPagination script -->
                         </ul>
                     </nav>
-
+                    <!-- Comments content -->
+                    <div class="row card-deck" id="comments-display">
+                        <!-- Here goes data from profileCommentPagination script -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -136,7 +82,8 @@
 </div>
 
 <%@ include file="../core/footer.jsp" %>
-<script src="../../js/getProfileDishPage.js"></script>
+<script src="../../js/profileDishPagination.js"></script>
+<script src="../../js/profileCommentPagination.js"></script>
 
 </body>
 </html>

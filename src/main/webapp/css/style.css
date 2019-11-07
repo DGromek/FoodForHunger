@@ -69,10 +69,6 @@ body, html {
     height: 40px;
 }
 
-.page-wrap {
-    min-height: 100vh;
-}
-
 /* Social media icons styles */
 
 .fa {
@@ -104,18 +100,36 @@ body, html {
     .browser-card-size {
         margin-left: auto;
         margin-right: auto;
-        max-width: 500px;
+        /*max-width: 500px;*/
     }
 }
 
-.profile-dish-card-size {
-    max-width: 510px;
-    height: 440px;
+/*.profile-dish-card-size {*/
+/*    height: 440px;*/
+/*}*/
+
+/*@media (min-width: 768px) {*/
+/*    .browser-card-size {*/
+/*        max-width: 46%;*/
+/*    }*/
+/*}*/
+
+/*.profile-comment-card-size {*/
+/*    max-width: 508px;*/
+/*}*/
+
+@media (min-width: 768px) {
+    .hidden-block {
+        visibility: hidden
+    }
 }
 
-.profile-comment-card-size {
-    max-width: 508px;
+@media (max-width: 765px) {
+    .hidden-block {
+        display: none;
+    }
 }
+
 
 /* Errors */
 

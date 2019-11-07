@@ -60,7 +60,7 @@
                     <a class="nav-link" href="/dish/browser/0">Szukaj dania</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/profile/<sec:authentication property="name"/>/0/0">Twoje konto</a>
+                    <a class="nav-link" href="/user/profile/<sec:authentication property="name"/>">Twoje konto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="javascript: document.logoutForm.submit()">Wyloguj</a>
