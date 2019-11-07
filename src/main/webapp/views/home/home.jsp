@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html lang="pl">
 <head>
-    <title></title>
+    <title>Food4Głód</title>
 </head>
 <body>
 
@@ -12,15 +12,24 @@
     <div class="bg-image1 row">
         <div class="align-self-center col-12 text-dark text-center">
             <h1 class="p-4">Bacon ipsum dolor amet biltong shoulder</h1>
-            <button class="btn btn-lg btn-info">Zarejestruj się teraz!</button>
+            <form action="/register" method="get">
+                <button class="btn btn-lg btn-info" type="submit">Zarejestruj się teraz!</button>
+            </form>
         </div>
     </div>
 </div>
 
 <div class="container py-5">
-    <h2 class = "text-center">Lorem ipsum dolor sit amet</h2>
+    <h2 class="text-center">Lorem ipsum dolor sit amet</h2>
     <p>
-        Mauris scelerisque blandit ligula at semper. Proin ac euismod purus. Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In ultrices sagittis ante, sit amet condimentum neque iaculis iaculis. Suspendisse potenti. Suspendisse turpis lacus, tincidunt in ligula vitae, sollicitudin ornare massa. Curabitur ipsum velit, tristique non congue sit amet, viverra sed ipsum. Nulla vitae augue ut turpis fringilla interdum eget id tortor. Sed cursus quam quis nibh facilisis, consectetur commodo sapien condimentum. Suspendisse potenti. Integer sagittis lectus ac turpis finibus, ut imperdiet libero tempus. Cras erat magna, scelerisque in magna sit amet, feugiat aliquam nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur sagittis sem, ac ultricies orci mollis et
+        Mauris scelerisque blandit ligula at semper. Proin ac euismod purus. Suspendisse potenti. Cras augue felis,
+        hendrerit ultrices pharetra non, posuere vel odio. In ultrices sagittis ante, sit amet condimentum neque iaculis
+        iaculis. Suspendisse potenti. Suspendisse turpis lacus, tincidunt in ligula vitae, sollicitudin ornare massa.
+        Curabitur ipsum velit, tristique non congue sit amet, viverra sed ipsum. Nulla vitae augue ut turpis fringilla
+        interdum eget id tortor. Sed cursus quam quis nibh facilisis, consectetur commodo sapien condimentum.
+        Suspendisse potenti. Integer sagittis lectus ac turpis finibus, ut imperdiet libero tempus. Cras erat magna,
+        scelerisque in magna sit amet, feugiat aliquam nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur sagittis sem, ac ultricies orci mollis et
     </p>
 </div>
 
@@ -33,7 +42,9 @@
                 <div class="card-body text-center">
                     <img class="card-img-top img-fluid icon" src="img/instagram-icon.png">
                     <h4 class="card-title pt-2">Card title 1</h4>
-                    <p class="card-text">Mauris scelerisque blandit ligula at semper. Proin ac euismod purus. Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In ultrices sagittis ante, sit amet condimentum neque iaculis iaculis.</p>
+                    <p class="card-text">Mauris scelerisque blandit ligula at semper. Proin ac euismod purus.
+                        Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In
+                        ultrices sagittis ante, sit amet condimentum neque iaculis iaculis.</p>
                 </div>
             </div>
 
@@ -41,7 +52,9 @@
                 <div class="card-body text-center">
                     <img class="card-img-top img-fluid icon" src="img/instagram-icon.png">
                     <h4 class="card-title pt-2">Card title 1</h4>
-                    <p class="card-text">Mauris scelerisque blandit ligula at semper. Proin ac euismod purus. Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In ultrices sagittis ante, sit amet condimentum neque iaculis iaculis.</p>
+                    <p class="card-text">Mauris scelerisque blandit ligula at semper. Proin ac euismod purus.
+                        Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In
+                        ultrices sagittis ante, sit amet condimentum neque iaculis iaculis.</p>
                 </div>
             </div>
 
@@ -49,7 +62,9 @@
                 <div class="card-body text-center">
                     <img class="card-img-top img-fluid icon" src="img/instagram-icon.png">
                     <h4 class="card-title pt-2">Card title 1</h4>
-                    <p class="card-text">Mauris scelerisque blandit ligula at semper. Proin ac euismod purus. Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In ultrices sagittis ante, sit amet condimentum neque iaculis iaculis.</p>
+                    <p class="card-text">Mauris scelerisque blandit ligula at semper. Proin ac euismod purus.
+                        Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In
+                        ultrices sagittis ante, sit amet condimentum neque iaculis iaculis.</p>
                 </div>
             </div>
         </div>
@@ -61,12 +76,16 @@
         <div class="col-md-6">
             <h2>Lorem ipsum dolor sit amet</h2>
             <p>
-                Mauris scelerisque blandit ligula at semper. Proin ac euismod purus. Suspendisse potenti. Cras augue felis, hendrerit ultrices pharetra non, posuere vel odio. In ultrices sagittis ante, sit amet condimentum neque iaculis iaculis. Suspendisse potenti. Suspendisse turpis lacus, tincidunt in ligula vitae, sollicitudin ornare massa.
+                Mauris scelerisque blandit ligula at semper. Proin ac euismod purus. Suspendisse potenti. Cras augue
+                felis, hendrerit ultrices pharetra non, posuere vel odio. In ultrices sagittis ante, sit amet
+                condimentum neque iaculis iaculis. Suspendisse potenti. Suspendisse turpis lacus, tincidunt in ligula
+                vitae, sollicitudin ornare massa.
         </div>
 
         <!-- Carousel -->
         <div class="col-md-6">
-            <div id="carouselExampleControls" class="shadow-lg w-75 m-auto carousel slide carousel" data-ride="carousel">
+            <div id="carouselExampleControls" class="shadow-lg w-75 m-auto carousel slide carousel"
+                 data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="img/food-1.jpg" class="d-block w-100">

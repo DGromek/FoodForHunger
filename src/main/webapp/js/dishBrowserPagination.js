@@ -31,15 +31,15 @@ function dishBrowserPagination(pageIdx) {
                 if (i < dishes.length) {
                     browserResults.append(
                         '<div class="card p-4 mb-3 border-0 shadow">' +
-                        '<img class="card-img-top img-fluid" src="/dish/getImage/' + dishes[i].id + '" id="browser-dish-thumbnail">' +
-                        '<div class="card-body px-1">' +
-                        '<h4 class="card-title">' + dishes[i].name + '</h4>' +
-                        '<h6 class="card-subtitle mb-2 text-muted">By <a href="/user/profile/' + dishes[i].user.username + '">' + dishes[i].user.username + '</a></h6>' +
-                        '<p class="card-text">' + dishes[i].description + '</p>' +
-                        '</div>' +
-                        '<div class="card-footer bg-transparent border-0 px-1 pb-3">' +
-                        '<a href="/dish/details/' + dishes[i].id + '" class="btn btn-info">Zobacz więcej!</a>' +
-                        '</div>' +
+                        '   <img class="card-img-top img-fluid dish-browser-thumbnail" src="/dish/getImage/' + dishes[i].id + '">' +
+                        '   <div class="card-body px-1">' +
+                        '       <h4 class="card-title">' + dishes[i].name + '</h4>' +
+                        '       <h6 class="card-subtitle mb-2 text-muted">By <a href="/user/profile/' + dishes[i].user.username + '">' + dishes[i].user.username + '</a></h6>' +
+                        '       <p class="card-text">' + dishes[i].description + '</p>' +
+                        '   </div>' +
+                        '   <div class="card-footer bg-transparent border-0 px-1 pb-3">' +
+                        '       <a href="/dish/details/' + dishes[i].id + '" class="btn btn-info">Zobacz więcej!</a>' +
+                        '   </div>' +
                         '</div>');
                 } else {
                     browserResults.append('<div class="card p-4 mb-3 hidden-block"></div>');

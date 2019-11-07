@@ -15,7 +15,7 @@
 <div class="container p-4 my-4 bg-page shadow rounded">
     <div class="row">
         <div class="col-md-3 col-lg-2 pb-2 px-2 d-flex justify-content-center">
-            <img src="/user/getImage/${user.id}" id="user-avatar" class="img-fluid">
+            <img src="/user/getImage/${user.id}" class="img-fluid user-avatar">
         </div>
         <div class="col-md-9 col-lg-10">
             <div class="row">

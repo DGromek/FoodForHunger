@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<html lang="en">
+<html lang="pl">
 <head>
     <script>
         function clearPasswordInputs() {
@@ -9,7 +9,7 @@
             document.getElementById('password-2').value = '';
         }
     </script>
-    <title></title>
+    <title>Zarejestruj</title>
 </head>
 <body onload="clearPasswordInputs()">
 

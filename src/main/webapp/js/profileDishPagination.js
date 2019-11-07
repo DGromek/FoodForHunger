@@ -1,6 +1,6 @@
 function profileDishPagination(username, pageIdx) {
     const dishDisplay = $('#dish-display');
-    const dishPagination = $('#dish-browser-pagination')
+    const dishPagination = $('#dish-display-pagination')
 
     $.ajax({
         url: 'http://localhost:8080/rest/getProfileDishes/' + username + '/' + pageIdx,
@@ -31,16 +31,16 @@ function profileDishPagination(username, pageIdx) {
                 if (i < dishes.length) {
                     dishDisplay.append(
                         '<div class="card my-4 p-3 border shadow bg-light">' +
-                        '<img class="card-img-top img-fluid dish-profile-thumbnail" src="/dish/getImage/' + dishes[i].id + '">' +
-                        '<div class="card-body pb-0">' +
-                        '<h5>' + dishes[i].name + '</h5>' +
-                        '<p class="card-text">' + dishes[i].description + '</p>' +
-                        '</div>' +
-                        '<div class="card-footer border-0 text-right bg-light">' +
-                        '<form action="/dish/details/' + dishes[i].id + '">' +
-                        '<button type="submit" class="btn btn-info btn-sm">Szczegóły</button>' +
-                        '</form>' +
-                        '</div>' +
+                        '   <img class="card-img-top img-fluid dish-profile-thumbnail" src="/dish/getImage/' + dishes[i].id + '">' +
+                        '   <div class="card-body pb-0">' +
+                        '       <h5>' + dishes[i].name + '</h5>' +
+                        '       <p class="card-text">' + dishes[i].description + '</p>' +
+                        '   </div>' +
+                        '   <div class="card-footer border-0 text-right bg-light">' +
+                        '       <form action="/dish/details/' + dishes[i].id + '">' +
+                        '           <button type="submit" class="btn btn-info btn-sm">Szczegóły</button>' +
+                        '       </form>' +
+                        '   </div>' +
                         '</div>')
                 } else {
                     dishDisplay.append('<div class="col-md-6 my-4 p-3 hidden-block"></div>');

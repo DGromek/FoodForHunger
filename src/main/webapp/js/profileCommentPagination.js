@@ -32,26 +32,26 @@ function profileCommentPagination(username, pageIdx) {
                 if ( i < comments.length) {
                     commentDisplay.append(
                         '<div class="card my-3 border shadow bg-light rounded p-0">' +
-                        '<div class="card-header">' +
-                        '<div class="row">' +
-                        '<div class="px-2">' +
-                        '<img src="/user/getImage/' + comments[i].author.id + '" class="img-fluid rounded-circle pr-1" id="user-avatar-thumbnail">' +
-                        '</div>' +
-                        '<div class="col m-auto p-0">' +
-                        '<a href="/user/profile/' + comments[i].author.username +'">' + comments[i].author.username + '</a>' +
-                        '</div>' +
-                        '<div class="col m-auto text-right" id="rating-' + i + '">' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="card-body pb-0">' +
-                        '<div class="card-text">' +
-                        '<p>' + comments[i].content + '</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="card-footer border-0 bg-light pt-0">' +
-                        '<small>Dodano: ' + comments[i].created + '</small>' +
-                        '</div>' +
+                        '   <div class="card-header">' +
+                        '       <div class="row">' +
+                        '           <div class="px-2">' +
+                        '               <img src="/user/getImage/' + comments[i].author.id + '" class="pr-1 rounded-circle img-fluid user-avatar-thumbnail">' +
+                        '           </div>' +
+                        '           <div class="col m-auto p-0">' +
+                        '               <a href="/user/profile/' + comments[i].author.username +'">' + comments[i].author.username + '</a>' +
+                        '           </div>' +
+                        '           <div class="col m-auto text-right" id="rating-' + i + '">' +
+                        '           </div>' +
+                        '       </div>' +
+                        '   </div>' +
+                        '   <div class="card-body pb-0">' +
+                        '       <div class="card-text">' +
+                        '           <p>' + comments[i].content + '</p>' +
+                        '       </div>' +
+                        '   </div>' +
+                        '   <div class="card-footer border-0 bg-light pt-0">' +
+                        '       <small>Dodano: ' + comments[i].created + '</small>' +
+                        '   </div>' +
                         '</div>').hide().fadeIn(250);
 
                     let rating = $('#rating-' + i);

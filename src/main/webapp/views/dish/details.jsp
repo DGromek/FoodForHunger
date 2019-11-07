@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col">
             <a href="#dishImgModal" role="button" data-toggle="modal">
-                <img src="/dish/getImage/${dish.id}" class="img-fluid" id="dish-details-thumbnail">
+                <img src="/dish/getImage/${dish.id}" class="img-fluid dish-details-thumbnail">
             </a>
         </div>
     </div>
