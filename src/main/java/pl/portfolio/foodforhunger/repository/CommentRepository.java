@@ -16,4 +16,6 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findAllByReceiverId(Long id);
 
     Page<Comment> findAllByReceiverId(Long id, Pageable pageable);
+
+    Page<Comment> findAllByReceiverIdOrderByCreatedDesc(Long id, Pageable pageable);
 }

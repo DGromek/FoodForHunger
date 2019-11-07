@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html lang="pl">
 <head>
-    <title></title>
+    <title>Zaloguj</title>
 </head>
 <body>
 
@@ -9,7 +9,7 @@
 
 <div class="bg-register container-fluid main-box">
     <div class="row">
-        <div class="col-md-4 align-self-center mt-5 mb-auto mx-auto p-5 shadow rounded box-size bg-page">
+        <div class="col-md-4 mt-5 mb-auto mx-auto p-5 align-self-center shadow rounded bg-page">
 
             <c:if test="${!empty param.error}">
                 <div class="alert alert-danger">

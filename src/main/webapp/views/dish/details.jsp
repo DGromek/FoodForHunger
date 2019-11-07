@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title></title>
+    <title>${dish.name} by ${dish.user.username}</title>
 </head>
 <body>
 
@@ -16,12 +16,12 @@
     <div class="row">
         <div class="col">
             <a href="#dishImgModal" role="button" data-toggle="modal">
-                <img src="/dish/getImage/${dish.id}" class="img-fluid" id="dish-details-thumbnail">
+                <img src="/dish/getImage/${dish.id}" class="img-fluid dish-details-thumbnail">
             </a>
         </div>
     </div>
     <h2 class="pt-2">${dish.name}</h2>
-    <h6>By <a href="/user/profile/${dish.user.username}/0/0">${dish.user.username}</a></h6>
+    <h6>By <a href="/user/profile/${dish.user.username}">${dish.user.username}</a></h6>
     <p>${dish.description}</p>
 
     <div class="text-right">

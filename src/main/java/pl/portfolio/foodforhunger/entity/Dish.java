@@ -1,6 +1,8 @@
 package pl.portfolio.foodforhunger.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -42,6 +44,7 @@ public class Dish {
     @Min(0)
     private Integer portionSize;
 
+    @JsonManagedReference
     @ManyToOne
     private User user;
 

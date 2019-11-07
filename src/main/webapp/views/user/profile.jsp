@@ -7,15 +7,14 @@
 <head>
     <title>${user.username}</title>
 </head>
-
-<body>
+<body onload="profileDishPagination('${user.username}', 0); profileCommentPagination('${user.username}', 0, '${loggedUser}')">
 
 <%@ include file="../core/header.jsp" %>
 
 <div class="container p-4 my-4 bg-page shadow rounded">
     <div class="row">
         <div class="col-md-3 col-lg-2 pb-2 px-2 d-flex justify-content-center">
-            <img src="/user/getImage/${user.id}" id="user-avatar" class="img-fluid">
+            <img src="/user/getImage/${user.id}" class="img-fluid user-avatar">
         </div>
         <div class="col-md-9 col-lg-10">
             <div class="row">
@@ -53,120 +52,67 @@
 
                 <!-- Dishes section -->
                 <div class="tab-pane fade show active" id="dishes" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="row card-deck">
-
-                        <c:forEach items="${dishPage.iterator()}" var="dish">
-                            <div class="card col-md-6 my-4 p-3 border shadow bg-light profile-dish-card-size">
-                                <img class="card-img-top img-fluid" src="https://placehold.it/100x45">
-                                <div class="card-body">
-                                    <h5>${dish.name}</h5>
-                                    <p class="card-text">
-                                            ${dish.description}
-                                    </p>
-                                </div>
-                                <div class="card-footer border-0 text-right bg-light">
-                                    <form action="/dish/details/${dish.id}">
-                                        <button type="submit" class="btn btn-info btn-sm">Szczegóły</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
-
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center">
-                            <c:if test="${dishPage.number eq 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}"
-                                        class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number - 1}/${commentPage.number}"
-                                        class="page-link">${dishPage.number}</a></li>
-                            </c:if>
-
-                            <li class="page-item active"><a class="page-link">${dishPage.number + 1}</a></li>
-
-                            <c:if test="${dishPage.number < dishPage.totalPages - 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}"
-                                        class="page-link">${dishPage.number + 2}</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number + 1}/${commentPage.number}"
-                                        class="page-link">&raquo;</a></li>
-                            </c:if>
+                        <ul class="pagination pagination-sm justify-content-center mb-0" id="dish-display-pagination">
+                            <!-- Here goes data from profileDishPagination script -->
                         </ul>
                     </nav>
-
+                    <div class="card-deck" id="dish-display">
+                        <!-- Here goes data from profileDishPagination script -->
+                    </div>
                 </div>
 
                 <!-- Comments section -->
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
-                    <c:forEach items="${commentPage.content}" var="row">
-                        <div class="row card-deck">
-                            <c:forEach items="${row.content}" var="comment">
-                                <div class="card col-md-6 my-3 border shadow bg-light rounded p-0">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="px-2">
-                                                <img src="/user/getImage/${comment.author.id}"
-                                                     class="img-fluid rounded-circle pr-1"
-                                                     id="user-avatar-thumbnail">
-                                            </div>
-                                            <div class="col m-auto p-0">
-                                                <a href="/user/profile/${comment.author.username}/0/0">${comment.author.username}</a>
-                                            </div>
-                                            <div class="col m-auto text-right">
-                                                <c:forEach step="1" begin="1" end="${comment.rating}">
-                                                    <i class="fa fa-star"></i>
-                                                </c:forEach>
-                                                <c:forEach step="1" begin="1" end="${5 - comment.rating}">
-                                                    <i class="fa fa-star-o"></i>
-                                                </c:forEach>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-text">
-                                            <p>${comment.content}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </c:forEach>
-
                     <!-- Comments paggination -->
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center">
-                            <c:if test="${commentPage.number eq 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}"
-                                        class="page-link">&laquo;</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number - 1}"
-                                        class="page-link">${commentPage.number}</a></li>
-                            </c:if>
-
-                            <li class="page-item active"><a class="page-link">${commentPage.number + 1}</a></li>
-
-                            <c:if test="${commentPage.number < commentPage.totalPages - 1}">
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}"
-                                        class="page-link">${commentPage.number + 2}</a></li>
-                                <li class="page-item"><a
-                                        href="/user/profile/${user.username}/${dishPage.number}/${commentPage.number + 1}"
-                                        class="page-link">&raquo;</a></li>
-                            </c:if>
+                        <ul class="pagination pagination-sm justify-content-center mb-0" id="comment-display-pagination">
+                            <!-- Here goes data from profileCommentPagination script -->
                         </ul>
                     </nav>
-
+                    <!-- Comments content -->
+                    <div class="card-deck" id="comment-display">
+                        <!-- Here goes data from profileCommentPagination script -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="deleteCommentModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <!-- Exit button -->
+                <button type="button" class="close pb-3" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Content -->
+                <h5 class="py-2">Jesteś pewien?</h5>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success" data-dismiss="modal" aria-label="Close">Anuluj</button>
+                    <button class="btn btn-danger ml-1" id="delete-button">Usuń</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <%@ include file="../core/footer.jsp" %>
+<script src="../../js/profileDishPagination.js"></script>
+<script src="../../js/profileCommentPagination.js"></script>
+
+<%--<script>--%>
+<%--   $('#deleteCommentModal').on('show.bs.modal', function() {--%>
+<%--       let button = $(event.relatedTarget);--%>
+<%--       let recipient = button.data('id');--%>
+<%--       $('#delete-button').attr("onclick", window.location.href = '/comment/delete/' + recipient);--%>
+<%--   })--%>
+<%--</script>--%>
 
 </body>
 </html>

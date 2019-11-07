@@ -34,39 +34,39 @@ body, html {
     background-color: rgb(230, 240, 255);
 }
 
+.page-item:hover {
+    cursor: pointer;
+}
+
 /* Page images sizes */
 
-#dish-details-thumbnail {
+.dish-details-thumbnail {
     width: 1900px;
     height: 450px;
     object-fit: cover;
 }
 
-#dish-profile-thumbnail {
+.dish-profile-thumbnail {
     width: 475px;
     height: 215px;
     object-fit: cover;
 }
 
-#dish-browser-thumbnail {
+.dish-browser-thumbnail {
     width: 350px;
     height: 180px;
     object-fit: cover;
 }
 
-#user-avatar {
+.user-avatar {
     width: 150px;
     height: 150px;
     object-fit: cover;
 }
 
-#user-avatar-thumbnail {
+.user-avatar-thumbnail {
     width: 40px;
     height: 40px;
-}
-
-.page-wrap {
-    min-height: 100vh;
 }
 
 /* Social media icons styles */
@@ -89,21 +89,21 @@ body, html {
     height: 15px;
 }
 
-/* Card max sizes */
 
-.browser-card-size {
-    max-width: 350px;
-    height: 450px;
+@media (min-width: 768px) {
+    .hidden-block {
+        visibility: hidden
+    }
 }
 
-.profile-dish-card-size {
-    max-width: 510px;
-    height: 440px;
+@media (max-width: 765px) {
+    .hidden-block {
+        display: none;
+    }
 }
 
-.profile-comment-card-size {
-    max-width: 508px;
-}
+
+/* Errors */
 
 .error-code {
     font-size: 200px;

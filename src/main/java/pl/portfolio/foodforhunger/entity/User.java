@@ -1,7 +1,7 @@
 package pl.portfolio.foodforhunger.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import pl.portfolio.foodforhunger.dto.RegisterUserDTO;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -22,7 +22,7 @@ public class User {
 
     @NotEmpty(message = "Login nie może być pusty.")
     @Size(min = 5, max = 15, message = "Login musi mieć długość między 5 a 15 znaków.")
-    @Column(unique = true)
+//    @UniqueUsername
     private String username;
 
     @Column(columnDefinition = "MEDIUMBLOB")
@@ -30,7 +30,6 @@ public class User {
 
     @NotEmpty(message = "Email nie może być pusty.")
     @Email
-    @Column(unique = true)
     private String email;
 
     @NotEmpty(message = "Hasło nie może być puste.")
@@ -47,12 +46,15 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "author")
     private List<Comment> authorComments = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "receiver")
     private List<Comment> receiverComments = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "user")
     private List<Dish> dishes = new ArrayList<>();
 
