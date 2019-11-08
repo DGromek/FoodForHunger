@@ -107,6 +107,19 @@
     </ul>
 </nav>
 
+<!-- Dish browser result template -->
+<div class="card p-4 mb-3 border-0 shadow d-none" id="browser-card-template">
+    <img class="card-img-top img-fluid dish-browser-thumbnail">
+    <div class="card-body px-1">
+        <h4 class="card-title"><!-- Dish name --></h4>
+        <h6 class="card-subtitle mb-2 text-muted">Ugotował: <a> <!-- Dish author --></a></h6>
+        <p class="card-text"> <!-- Dish description --></p>
+    </div>
+    <div class="card-footer bg-transparent border-0 px-1 pb-3">
+        <a class="btn btn-info" id="dish-details">Zobacz więcej!</a>
+    </div>
+</div>
+
 <%@ include file="../core/footer.jsp" %>
 <script src="../../js/dishBrowserPagination.js"></script>
 
