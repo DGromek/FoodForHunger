@@ -34,7 +34,7 @@ function profileCommentPagination(username, pageIdx, loggedUser) {
             for (let i = 0; i < 4; i++) {
                 if ( i < comments.length) {
                     commentDisplay.append(
-                        '<div class="card my-3 border shadow bg-light rounded p-0">' +
+                        '<div class="card my-3 border shadow bg-light rounded p-0" id="comment-' + comments[i].id + '">' +
                         '   <div class="card-header">' +
                         '       <div class="row">' +
                         '           <div class="px-2">' +
@@ -43,7 +43,7 @@ function profileCommentPagination(username, pageIdx, loggedUser) {
                         '           <div class="col m-auto p-0">' +
                         '               <a href="/user/profile/' + comments[i].author.username +'">' + comments[i].author.username + '</a>' +
                         '           </div>' +
-                        '           <div class="col m-auto text-right" id="rating-' + i + '">' +
+                        '           <div class="col m-auto text-right" id="rating-' + comments[i].id + '" data-value="' + comments[i].rating + '">' +
                         '           </div>' +
                         '       </div>' +
                         '   </div>' +
@@ -58,13 +58,16 @@ function profileCommentPagination(username, pageIdx, loggedUser) {
                         '               <small>Dodano: ' + comments[i].created + '</small>' +
                         '           </div>' +
                         '           <div class="col text-right" id="comment-footer-' + i + '">' +
-                        '               <small><a href="">Edytuj</a>  <a href="" data-toggle="modal" data-target="#deleteCommentModal" data-id="' + comments[i].id + '">Usuń</a></small>' +
+                        '               <small>' +
+                        '                   <a class="mr-2" href="" data-toggle="modal" data-target="#addEditCommentModal" data-id="' + comments[i].id + '">Edytuj</a>  ' +
+                        '                   <a href="" data-toggle="modal" data-target="#deleteCommentModal" data-id="' + comments[i].id + '">Usuń</a>' +
+                        '               </small>' +
                         '           </div>' +
                         '       </div>' +
                         '   </div>' +
                         '</div>');
 
-                    let rating = $('#rating-' + i);
+                    let rating = $('#rating-' + comments[i].id);
                     for (let j = 0; j < 5; j++) {
                         if (j < comments[i].rating) {
                             rating.append('<i class="fa fa-star"></i>');
@@ -78,14 +81,14 @@ function profileCommentPagination(username, pageIdx, loggedUser) {
                         commentFooter.css("display", "none")
                     }
                 } else {
-                    commentDisplay.append('<div class="col-md-6 my-3 p-0 hidden-block"></div>')
+                    commentDisplay.append('<div class="col-md-6 my-3 p-0 hidden-block"></div>'); //Added to have better scaling cards
                     if (comments.length < 3) {
                         break;
                     }
                 }
                 if ( i === 1) {
                     commentDisplay.append(
-                        '<div class="w-100 d-block"><!-- wrap every 2 to make responsive--></div>');
+                        '<div class="w-100 d-block"><!-- wrap every 2 to make card-deck responsive--></div>');
                 }
             }
         })

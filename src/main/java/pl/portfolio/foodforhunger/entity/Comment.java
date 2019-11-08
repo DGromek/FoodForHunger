@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -16,6 +18,8 @@ public class Comment {
     private Long id;
 
     @NotNull
+    @Min(1)
+    @Max(5)
     private Integer rating;
 
     @Column(columnDefinition = "TEXT")

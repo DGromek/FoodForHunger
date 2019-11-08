@@ -22,9 +22,14 @@
                     <h2 class="m-0">${user.username}</h2>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <c:if test="${loggedUser eq user.username}">
-                    <button class="btn btn-primary" onclick="window.location.href='/user/update'">Zaktualizuj</button>
-                    </c:if>
+                    <c:choose>
+                        <c:when test="${loggedUser eq user.username}">
+                            <button class="btn btn-primary" onclick="window.location.href='/user/update'">Zaktualizuj profil</button>
+                        </c:when>
+                        <c:otherwise>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#addEditCommentModal">Dodaj komentarz</button>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             <hr>
@@ -66,7 +71,8 @@
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="profile-tab">
                     <!-- Comments paggination -->
                     <nav>
-                        <ul class="pagination pagination-sm justify-content-center mb-0" id="comment-display-pagination">
+                        <ul class="pagination pagination-sm justify-content-center mb-0"
+                            id="comment-display-pagination">
                             <!-- Here goes data from profileCommentPagination script -->
                         </ul>
                     </nav>
@@ -80,8 +86,8 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="deleteCommentModal">
+<!-- Delete Comment Modal -->
+<div class="modal fade" id="deleteCommentModal" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
 
@@ -94,7 +100,45 @@
                 <h5 class="py-2">Jesteś pewien?</h5>
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-success" data-dismiss="modal" aria-label="Close">Anuluj</button>
-                    <button class="btn btn-danger ml-1" id="delete-button">Usuń</button>
+                    <a class="btn btn-danger ml-1" id="delete-button">Usuń</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit comment modal -->
+<div class="modal fade" id="addEditCommentModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <!-- Exit button -->
+                <button type="button" class="close pb-3" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Content -->
+                <h5 class="py-2"></h5>
+                <form>
+                    <div class="form-group">
+                        <label>Wybierz ocenę</label>
+                        <select class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Treść:</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                </form>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary" data-dismiss="modal" aria-label="Close">Anuluj</button>
+                    <button class="btn btn-success ml-1" type="submit">Zapisz</button>
                 </div>
             </div>
 
@@ -106,13 +150,7 @@
 <script src="../../js/profileDishPagination.js"></script>
 <script src="../../js/profileCommentPagination.js"></script>
 
-<%--<script>--%>
-<%--   $('#deleteCommentModal').on('show.bs.modal', function() {--%>
-<%--       let button = $(event.relatedTarget);--%>
-<%--       let recipient = button.data('id');--%>
-<%--       $('#delete-button').attr("onclick", window.location.href = '/comment/delete/' + recipient);--%>
-<%--   })--%>
-<%--</script>--%>
+<script src="../../js/commentCRUDModals.js"></script>
 
 </body>
 </html>

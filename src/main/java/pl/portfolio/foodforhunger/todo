@@ -1,14 +1,12 @@
 1. Use of Validators to validate (Username, Email @Unique, Password & RepeatedPassword, this whole mess when changing password) <- Problems
-3. Make SQL database fixture. <- Problems
 4. Make complete CRUD for comments.
-5. Rest for pagination.
 6. Filtering
 7. Confirm register by email.
 
 Bugs:
 1. Add error handling on uploading images.
-2. Fix registration background bug.
 
 Far Future:
 1. Add messages system.
 2. Admin panel.
+3. SQL fixture
