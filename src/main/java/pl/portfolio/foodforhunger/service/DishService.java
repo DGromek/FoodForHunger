@@ -47,14 +47,19 @@ public class DishService {
 
     public Dish save(Dish dishToSave, MultipartFile dishPhoto, String authorUsername) throws IOException {
         if (!dishPhoto.isEmpty()) {
-            //String[] getFileType = dishPhoto.getName().split("\\.");
-            //if ("jpg".equals(getFileType[1]) || "png".equals(getFileType[1]) || "jpeg".equals(getFileType[1])) {
-                dishToSave.setDishPicture(dishPhoto.getBytes());
-            //}
+            dishToSave.setDishPicture(dishPhoto.getBytes());
         }
         dishToSave.setUser(userRepository.findByUsername(authorUsername));
         dishRepository.save(dishToSave);
         return dishToSave;
+    }
+
+    public Dish save(Dish dishToUpdate, MultipartFile dishPhoto) throws IOException {
+        if (!dishPhoto.isEmpty()) {
+            dishToUpdate.setDishPicture(dishPhoto.getBytes());
+        }
+        dishRepository.save(dishToUpdate);
+        return dishToUpdate;
     }
 
     public void delete(Dish dish) {
@@ -62,11 +67,13 @@ public class DishService {
     }
 
     //Pagination
-    public Page<Dish> findAllByUserId(Long userId, int pageId,  int size) {
+    public Page<Dish> findAllByUserId(Long userId, int pageId, int size) {
         return dishRepository.findAllByUserId(userId, PageRequest.of(pageId, size));
     }
 
-    public Page<Dish> findAll(int pageId, int size) { return dishRepository.findAll(PageRequest.of(pageId, size)); }
+    public Page<Dish> findAll(int pageId, int size) {
+        return dishRepository.findAll(PageRequest.of(pageId, size));
+    }
 
 
     public List<Dish> findAllByCity(String city) {
@@ -88,4 +95,6 @@ public class DishService {
         }
         return dishPicture;
     }
+
+
 }

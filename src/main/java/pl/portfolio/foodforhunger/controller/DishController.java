@@ -65,6 +65,27 @@ public class DishController {
         return "redirect:/user/profile/" + loggedUserUsername;
     }
 
+    @GetMapping("/update/{dishIdx}")
+    public String update(Principal principal, Model model, @PathVariable Long dishIdx) {
+        Dish dishToUpdate = dishService.getOne(dishIdx);
+
+        if (!principal.getName().equals(dishToUpdate.getUser().getUsername())) {
+            return "error/403";
+        }
+
+        model.addAttribute("dishToUpdate", dishToUpdate);
+        return "dish/update";
+    }
+
+    @PostMapping("/update")
+    public String update(@RequestParam("dishPhoto") MultipartFile dishPhoto, @Valid @ModelAttribute("dishToUpdate") Dish dishToUpdate, BindingResult errors, Principal principal) throws IOException {
+        if (errors.hasErrors()) {
+            return "/dish/update/" + dishToUpdate.getId();
+        }
+        dishService.save(dishToUpdate, dishPhoto);
+        return "redirect:/user/profile/" + principal.getName();
+    }
+
     //Method to get image of dish from DB
     @GetMapping("/getImage/{id}")
     public void getImage(@PathVariable long id, HttpServletResponse response) throws IOException {

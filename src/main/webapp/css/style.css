@@ -42,7 +42,7 @@ body, html {
 
 .dish-details-thumbnail {
     width: 1900px;
-    height: 450px;
+    max-height: 450px;
     object-fit: cover;
 }
 

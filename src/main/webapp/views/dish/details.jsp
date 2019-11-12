@@ -24,23 +24,30 @@
     <h6>By <a href="/user/profile/${dish.user.username}">${dish.user.username}</a></h6>
     <p>${dish.description}</p>
 
-    <div class="text-right">
-        <span class="pr-2">Portion: ${dish.portionSize}g</span>
-        <span class="pr-3">Price: ${dish.price} zł</span>
-        <c:choose>
-            <c:when test="${loggedUser eq dish.user.username}">
-                <button class="btn btn-warning">Edytuj</button>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteDishModal">Usuń danie</button>
-            </c:when>
+    <div class="row">
+        <div class="col-md-6">
+            <h6>Miejsce odbioru</h6>
+            <span>${dish.city} ul. ${dish.street} ${dish.houseNr} <c:if test="${not empty dish.flatNumber}">m. ${dish.flatNumber}</c:if></span>
+        </div>
+        <div class="col-md-6 text-right d-flex align-items-end justify-content-end">
+            <span class="pr-2"><h6 class="d-inline">Wielkość porcji:</h6> ${dish.portionSize}g</span>
+            <span class="pr-3"><h6 class="d-inline">Cena:</h6> ${dish.price} zł</span>
+            <c:choose>
+                <c:when test="${loggedUser eq dish.user.username}">
+                    <a href="/dish/update/${dish.id}" class="btn btn-warning mr-2">Edytuj</a>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteDishModal">Usuń</button>
+                </c:when>
 
-            <c:otherwise>
-                <button class="btn btn-success">Kup teraz!</button>
-            </c:otherwise>
-        </c:choose>
+                <c:otherwise>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#boughtDishModal">Kup teraz!
+                    </button>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
 </div>
 
-<!-- Modal1 -->
+<!-- Dish image modal -->
 <div class="modal fade" id="dishImgModal">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
@@ -58,7 +65,7 @@
     </div>
 </div>
 
-<!-- Modal2 -->
+<!-- Delete dish modal -->
 <div class="modal fade" id="deleteDishModal">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -71,11 +78,29 @@
                 <!-- Content -->
                 <h5 class="py-2">Jesteś pewien?</h5>
                 <div class="d-flex justify-content-end">
-                <button class="btn btn-success" data-dismiss="modal" aria-label="Close">Anuluj</button>
-                <button class="btn btn-danger ml-1" onclick="window.location.href = '/dish/delete/${dish.id}';">Usuń</button>
+                    <button class="btn btn-success" data-dismiss="modal" aria-label="Close">Anuluj</button>
+                    <button class="btn btn-danger ml-1" onclick="window.location.href = '/dish/delete/${dish.id}';">
+                        Usuń
+                    </button>
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<!-- Bought dish modal -->
+<div class="modal fade" id="boughtDishModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-4">
+                <!-- Content -->
+                <h4>Transakcja zakończona sukcesem!</h4>
+                <p>Skontaktuj się z sprzedającym w celu omówienia szczegółów odbioru!</p>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success px-4" data-dismiss="modal" aria-label="Close">Ok</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
