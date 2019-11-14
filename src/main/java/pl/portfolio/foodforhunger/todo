@@ -1,4 +1,4 @@
-1. Use of Validators to validate (Username, Email @Unique, Password & RepeatedPassword, this whole mess when changing password) <- Problems
+1. Use of Validators to validate (Username, Email @Unique, Password & RepeatedPassword, this whole mess when changing password, Comment author and receiver) <- Problems
 4. Make complete CRUD for comments.
 6. Filtering
 7. Confirm register by email.

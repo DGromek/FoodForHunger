@@ -17,7 +17,7 @@
 
 <div class="container-fluid">
     <div class="row bg-register">
-        <div class="col-lg-4 mt-5 mb-auto mx-auto p-5 shadow rounded bg-page">
+        <div class="col-10 col-md-8 col-lg-6 mt-5 mb-auto mx-auto p-5 shadow rounded bg-page">
         <h5 class="pb-2">Zarejestruj się</h5>
 
         <form:form action="/register" method="post" modelAttribute="userToRegister">

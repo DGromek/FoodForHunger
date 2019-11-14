@@ -2,6 +2,8 @@ package pl.portfolio.foodforhunger.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
+import pl.portfolio.foodforhunger.dto.CommentDTO;
+import pl.portfolio.foodforhunger.model.LocalDateTimeWrapper;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -34,9 +36,19 @@ public class Comment {
     private User receiver;
 
     @NotNull
-    private LocalDate created;
+    private LocalDateTime created;
 
     public Comment() {
+    }
+
+    public Comment(CommentDTO commentDTO, User author, User receiver) {
+        this.content = commentDTO.getContent();
+        this.rating = commentDTO.getRating();
+
+        this.author = author;
+        this.receiver = receiver;
+
+        created = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -79,11 +91,11 @@ public class Comment {
         this.receiver = receiver;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 }

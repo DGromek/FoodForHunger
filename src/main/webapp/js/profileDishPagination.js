@@ -1,24 +1,26 @@
-function profileDishPagination(username, pageIdx) {
+function profileDishPagination(pageIdx) {
     const $dishDisplay = $('#dish-display');
     const $dishCard = $('#dish-card-template');
     const $dishPagination = $('#dish-display-pagination');
 
-    $.getJSON('http://localhost:8080/rest/getProfileDishes/' + username + '/' + pageIdx)
+    const username = $('h2').text();
+
+    $.getJSON(window.location.origin + '/rest/getProfileDishes/' + username + '/' + pageIdx)
         .done(function (dishPage) {
             //Generating pagination
             $dishPagination.empty();
             if (dishPage.number !== 0) {
                 $dishPagination.append(
-                    '<li class="page-item"><a onclick="profileDishPagination(\'' + username + '\',' + 0 + ')" class="page-link">&laquo;</a></li>' +
-                    '<li class="page-item"><a onclick="profileDishPagination(\'' + username + '\',' + (dishPage.number - 1) + ')" class="page-link">' + dishPage.number + '</a></li>'
+                    '<li class="page-item"><a onclick="profileDishPagination(' + 0 + ')" class="page-link">&laquo;</a></li>' +
+                    '<li class="page-item"><a onclick="profileDishPagination(' + (dishPage.number - 1) + ')" class="page-link">' + dishPage.number + '</a></li>'
                 );
             }
             $dishPagination.append('<li class="page-item active"><a class="page-link">' + (dishPage.number + 1) + '</a></li>');
 
             if (dishPage.number < dishPage.totalPages - 1) {
                 $dishPagination.append(
-                    '<li class="page-item"><a onclick="profileDishPagination(\'' + username + '\',' + (dishPage.number + 1) + ')" class="page-link">' + (dishPage.number + 2) + '</a></li>' +
-                    '<li class="page-item"><a onclick="profileDishPagination(\'' + username + '\',' + (dishPage.totalPages - 1) + ')" class="page-link">&raquo;</a></li>');
+                    '<li class="page-item"><a onclick="profileDishPagination(' + (dishPage.number + 1) + ')" class="page-link">' + (dishPage.number + 2) + '</a></li>' +
+                    '<li class="page-item"><a onclick="profileDishPagination(' + (dishPage.totalPages - 1) + ')" class="page-link">&raquo;</a></li>');
             }
             //Generating divs with content
             $dishDisplay.empty();

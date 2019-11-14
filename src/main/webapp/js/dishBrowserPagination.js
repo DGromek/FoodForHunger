@@ -3,7 +3,7 @@ function dishBrowserPagination(pageIdx) {
     const $browserPagination = $('#browser-pagination');
     const $browserCard = $('#browser-card-template')
 
-    $.getJSON('http://localhost:8080/rest/getBrowserResults/' + pageIdx)
+    $.getJSON(window.location.origin + '/rest/getBrowserResults/' + pageIdx)
         .done(function (browserPage) {
             //Generating pagination
             $browserPagination.empty();

@@ -18,6 +18,10 @@
     <!-- Own styles -->
     <link rel="stylesheet" href="<c:url value='/css/style.css'/>"/>
 
+    <!-- CSRF token -->
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
     <title></title>
 </head>
 <body>
