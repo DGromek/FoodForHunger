@@ -30,6 +30,7 @@
             <label>Zmień avatar</label>
             <input type="file" class="form-control-file" name="avatar">
             <small class="form-text text-muted">Maksymalny rozmiar: 16MB. Akceptowane rozszerzenia: .jpg, .jpeg, .png.</small>
+            <small class="error-message" id="upload-file-error" ></small>
         </div>
 
         <h5 class="pt-2">Zmień hasło</h5>
@@ -65,6 +66,7 @@
 </div>
 
 <%@ include file="../core/footer.jsp" %>
+<script src="../../js/uploadFileValidation.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package pl.portfolio.foodforhunger.validator;
+package pl.portfolio.foodforhunger.exceptionhandler;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,4 +30,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 
         return new ResponseEntity<>(errors, headers, status);
     }
+
+
 }

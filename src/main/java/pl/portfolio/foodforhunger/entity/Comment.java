@@ -3,12 +3,10 @@ package pl.portfolio.foodforhunger.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import pl.portfolio.foodforhunger.dto.CommentDTO;
-import pl.portfolio.foodforhunger.model.LocalDateTimeWrapper;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

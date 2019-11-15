@@ -36,6 +36,7 @@
                     <label>Wybierz zdjęcie</label>
                     <input type="file" class="form-control-file" name="dishPhoto">
                     <small class="form-text text-muted">Maksymalny rozmiar: 16MB. Akceptowane rozszerzenia: .jpg, .jpeg, .png.</small>
+                    <small class="error-message" id="upload-file-error" ></small>
                 </div>
             </div>
             <div class="col-sm-2">
@@ -96,6 +97,7 @@
 </div>
 
 <%@ include file="../core/footer.jsp" %>
+<script src="../../js/uploadFileValidation.js"></script>
 
 </body>
 </html>

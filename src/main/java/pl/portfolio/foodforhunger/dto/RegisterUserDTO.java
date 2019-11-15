@@ -1,12 +1,14 @@
 package pl.portfolio.foodforhunger.dto;
 
-import javax.persistence.Column;
+
+
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import static pl.portfolio.foodforhunger.entity.User.PASSWORD_MINIMUM_LENGTH;
+
 
 public class RegisterUserDTO {
 

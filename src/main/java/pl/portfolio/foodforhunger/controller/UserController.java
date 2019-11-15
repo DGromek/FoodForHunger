@@ -10,6 +10,7 @@ import pl.portfolio.foodforhunger.dto.UpdateUserDTO;
 import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.service.UserService;
 
+import javax.persistence.Table;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -51,7 +52,7 @@ public class UserController {
     public String update(Principal principal, @Valid @ModelAttribute("updateUserDTO") UpdateUserDTO updateUserDTO, @RequestParam("avatar") MultipartFile avatar, BindingResult errors) throws IOException {
         User loggedUser = userService.findByUsername(principal.getName());
 
-        if (!userService.isUpdateSuccessful(loggedUser, updateUserDTO, errors )) {
+        if (!userService.isUpdateSuccessful(loggedUser, updateUserDTO, errors)) {
             return "/user/update";
         }
 

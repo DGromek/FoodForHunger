@@ -2,6 +2,7 @@ package pl.portfolio.foodforhunger.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import pl.portfolio.foodforhunger.dto.RegisterUserDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -11,7 +12,10 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints = {
+        @UniqueConstraint(name = "UC_email", columnNames = { "email" } ),
+        @UniqueConstraint(name = "UC_username", columnNames =  { "username" } )
+})
 public class User {
 
     public static final int PASSWORD_MINIMUM_LENGTH = 8;
@@ -22,7 +26,6 @@ public class User {
 
     @NotEmpty(message = "Login nie może być pusty.")
     @Size(min = 5, max = 15, message = "Login musi mieć długość między 5 a 15 znaków.")
-//    @UniqueUsername
     private String username;
 
     @Column(columnDefinition = "MEDIUMBLOB")

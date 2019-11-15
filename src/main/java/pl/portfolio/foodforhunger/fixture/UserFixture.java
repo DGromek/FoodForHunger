@@ -2,6 +2,7 @@ package pl.portfolio.foodforhunger.fixture;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import pl.portfolio.foodforhunger.entity.Role;
 import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.repository.RoleRepository;
@@ -25,6 +26,7 @@ public class UserFixture {
         this.roleRepository = roleRepository;
     }
 
+    @Transactional
     public void initData() throws IOException {
         User user1 = new User();
         FileInputStream fileInputStream;

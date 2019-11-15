@@ -1,6 +1,7 @@
 package pl.portfolio.foodforhunger.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -68,11 +69,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public boolean isRegistrationSuccessful(RegisterUserDTO userToRegister, BindingResult errors) {
+    public boolean arePasswordsTheSame(RegisterUserDTO userToRegister, BindingResult errors) {
         if (!userToRegister.getPassword().equals(userToRegister.getRepeatedPassword())) {
             errors.rejectValue("repeatedPassword", "error.userToRegister", "Hasła różnią się.");
         }
-
         return !errors.hasErrors();
     }
 
