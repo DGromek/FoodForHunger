@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.portfolio.foodforhunger.dto.RegisterUserDTO;
 import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.service.UserService;
+import pl.portfolio.foodforhunger.validator.PasswordValidator;
 
 import javax.validation.Valid;
 
@@ -18,10 +19,12 @@ import javax.validation.Valid;
 public class HomeController {
 
     private UserService userService;
+    private PasswordValidator passwordValidator;
 
     @Autowired
-    public HomeController(UserService userService) {
+    public HomeController(UserService userService, PasswordValidator passwordValidator) {
         this.userService = userService;
+        this.passwordValidator = passwordValidator;
     }
 
     @GetMapping("/register")
@@ -32,7 +35,10 @@ public class HomeController {
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("userToRegister") RegisterUserDTO userToRegister, BindingResult errors) {
-        userService.arePasswordsTheSame(userToRegister, errors);
+        if (!passwordValidator.arePasswordsTheSame(userToRegister, errors) && errors.hasErrors()) {
+            return "home/register";
+        }
+
         User user = new User(userToRegister);
 
         try {
@@ -43,11 +49,9 @@ public class HomeController {
             } else {
                 errors.rejectValue("username", "error.userToRegister", "Użytkownik o takim loginie już istnieje!");
             }
-        }
-
-        if (errors.hasErrors()) {
             return "home/register";
         }
+
         return "redirect:/";
     }
 
