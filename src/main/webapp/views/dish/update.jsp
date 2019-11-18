@@ -20,14 +20,14 @@
         <div class="form-group">
             <label>*Podaj nazwę</label>
             <form:input type="text" class="form-control" path="name"/>
-            <small><form:errors class="error-message d-block form-text" path="name"/></small>
+            <small class="error-message d-block form-text"><form:errors path="name"/></small>
         </div>
 
         <div class="form-group">
             <label>*Podaj opis</label>
             <form:textarea class="form-control" rows="4" path="description"/>
             <small class="form-text text-muted">Podaj krótki opis, który zachęci użytkowników do kupna!</small>
-            <small><form:errors class="error-message d-block form-text" path="description"/></small>
+            <small class="error-message d-block form-text"><form:errors path="description"/></small>
         </div>
 
         <div class="form-row">
@@ -36,14 +36,14 @@
                     <label>Wybierz zdjęcie</label>
                     <input type="file" class="form-control-file" name="dishPhoto">
                     <small class="form-text text-muted">Maksymalny rozmiar: 16MB. Akceptowane rozszerzenia: .jpg, .jpeg, .png.</small>
-                    <small class="error-message" id="upload-file-error" ></small>
+                    <small class="error-message d-block form-text"/></small>
                 </div>
             </div>
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>*Podaj cenę</label>
                     <form:input type="number" class="form-control" step="0.01" min="0" path="price"/>
-                    <small><form:errors class="error-message d-block form-text" path="price"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="price"/></small>
                 </div>
             </div>
             <div class="col-sm-2">
@@ -51,7 +51,7 @@
                     <label>*Podaj wielkość porcji</label>
                     <form:input type="number" class="form-control" step="1" min="0" path="portionSize"/>
                     <small class="form-text text-muted">Wyrażoną w gramach!</small>
-                    <small><form:errors class="error-message d-block form-text" path="portionSize"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="portionSize"/></small>
                 </div>
             </div>
         </div>
@@ -64,28 +64,28 @@
                 <div class="form-group">
                     <label>*Miasto</label>
                     <form:input type="text" class="form-control" path="city"/>
-                    <small><form:errors class="error-message d-block form-text" path="city"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="city"/></small>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
                     <label>*Ulica</label>
                     <form:input type="text" class="form-control" path="street"/>
-                    <small><form:errors class="error-message d-block form-text" path="street"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="street"/></small>
                 </div>
             </div>
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>*Numer domu</label>
                     <form:input type="text" class="form-control" path="houseNr"/>
-                    <small><form:errors class="error-message d-block form-text" path="houseNr"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="houseNr"/></small>
                 </div>
             </div>
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Numer lokalu</label>
                     <form:input type="text" class="form-control" path="flatNumber"/>
-                    <small><form:errors class="error-message d-block form-text" path="flatNumber"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="flatNumber"/></small>
                 </div>
             </div>
 

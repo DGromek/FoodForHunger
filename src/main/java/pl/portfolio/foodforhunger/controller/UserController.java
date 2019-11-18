@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.portfolio.foodforhunger.dto.UpdateUserDTO;
 import pl.portfolio.foodforhunger.entity.User;
 import pl.portfolio.foodforhunger.service.UserService;
+import pl.portfolio.foodforhunger.validator.FileValidator;
 import pl.portfolio.foodforhunger.validator.PasswordValidator;
 
 import javax.persistence.Table;
@@ -55,7 +56,7 @@ public class UserController {
     public String update(Principal principal, @Valid @ModelAttribute("updateUserDTO") UpdateUserDTO updateUserDTO, @RequestParam("avatar") MultipartFile avatar, BindingResult errors) throws IOException {
         User loggedUser = userService.findByUsername(principal.getName());
 
-        if (!passwordValidator.isPasswordUpdateSuccessful(loggedUser, updateUserDTO, errors)) {
+        if (!passwordValidator.isPasswordUpdateSuccessful(loggedUser, updateUserDTO, errors) || (!avatar.isEmpty() && !FileValidator.isImageExtensionCorrect(avatar))) {
             return "/user/update";
         }
 

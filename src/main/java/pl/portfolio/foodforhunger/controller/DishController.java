@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.portfolio.foodforhunger.entity.Dish;
 import pl.portfolio.foodforhunger.service.DishService;
+import pl.portfolio.foodforhunger.validator.FileValidator;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -58,9 +59,11 @@ public class DishController {
     @PostMapping("/add")
     public String add(@RequestParam("dishPhoto") MultipartFile dishPhoto, @Valid @ModelAttribute("dishToAdd") Dish dishToAdd, BindingResult errors, Principal principal) throws IOException {
         String loggedUserUsername = principal.getName();
-        if (errors.hasErrors()) {
+
+        if (errors.hasErrors() || !(!dishPhoto.isEmpty() && FileValidator.isImageExtensionCorrect(dishPhoto))) {
             return "/dish/add";
         }
+
         dishService.save(dishToAdd, dishPhoto, loggedUserUsername);
         return "redirect:/user/profile/" + loggedUserUsername;
     }
@@ -79,7 +82,7 @@ public class DishController {
 
     @PostMapping("/update")
     public String update(@RequestParam("dishPhoto") MultipartFile dishPhoto, @Valid @ModelAttribute("dishToUpdate") Dish dishToUpdate, BindingResult errors, Principal principal) throws IOException {
-        if (errors.hasErrors()) {
+        if (errors.hasErrors() || !(!dishPhoto.isEmpty() && FileValidator.isImageExtensionCorrect(dishPhoto))) {
             return "/dish/update/" + dishToUpdate.getId();
         }
         dishService.save(dishToUpdate, dishPhoto);

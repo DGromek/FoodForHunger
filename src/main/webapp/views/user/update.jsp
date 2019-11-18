@@ -16,21 +16,21 @@
         <div class="form-group">
             <label>Zmień adres email</label>
             <form:input type="email" class="form-control" path="email"/>
-            <small><form:errors class="error-message d-block form-text" path="email"/></small>
+            <small class="error-message d-block form-text"><form:errors path="email"/></small>
         </div>
 
         <div class="form-group">
             <label>Podaj opis</label>
             <form:textarea class="form-control" rows="4" path="description"/>
             <small class="form-text text-muted">Powiedz nam coś o sobie!</small>
-            <small><form:errors class="error-message d-block form-text" path="description"/></small>
+            <small class="error-message d-block form-text"><form:errors path="description"/></small>
         </div>
 
         <div class="form-group">
             <label>Zmień avatar</label>
             <input type="file" class="form-control-file" name="avatar">
             <small class="form-text text-muted">Maksymalny rozmiar: 16MB. Akceptowane rozszerzenia: .jpg, .jpeg, .png.</small>
-            <small class="error-message" id="upload-file-error" ></small>
+            <small class="error-message d-block form-text"></small>
         </div>
 
         <h5 class="pt-2">Zmień hasło</h5>
@@ -40,21 +40,21 @@
                 <div class="form-group">
                     <label>Podaj stare hasło</label>
                     <form:input type="password" class="form-control" path="oldPassword"/>
-                    <small><form:errors class="error-message d-block form-text" path="oldPassword"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="oldPassword"/></small>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
                     <label>Podaj nowe hasło</label>
                     <form:input type="password" class="form-control" path="newPassword"/>
-                    <small><form:errors class="error-message d-block form-text" path="newPassword"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="newPassword"/></small>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
                     <label>Powtórz nowe hasło</label>
                     <form:input type="password" class="form-control" path="newPasswordRepeated"/>
-                    <small><form:errors class="error-message d-block form-text" path="newPasswordRepeated"/></small>
+                    <small class="error-message d-block form-text"><form:errors path="newPasswordRepeated"/></small>
                 </div>
             </div>
         </div>
