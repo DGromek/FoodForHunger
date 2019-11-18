@@ -2,6 +2,7 @@ package pl.portfolio.foodforhunger.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import pl.portfolio.foodforhunger.validator.HouseNumber;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -32,9 +33,10 @@ public class Dish {
     private String street;
 
     @NotEmpty(message = "Nie może być puste!")
+    @HouseNumber
     private String houseNr;
 
-    private String flatNumber;
+    private Integer flatNumber;
 
     @NotNull(message = "Nie może byś puste!")
     @Min(0)
@@ -108,11 +110,11 @@ public class Dish {
         this.houseNr = houseNr;
     }
 
-    public String getFlatNumber() {
+    public Integer getFlatNumber() {
         return flatNumber;
     }
 
-    public void setFlatNumber(String flatNumber) {
+    public void setFlatNumber(Integer flatNumber) {
         this.flatNumber = flatNumber;
     }
 
