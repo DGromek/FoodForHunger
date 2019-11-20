@@ -59,8 +59,13 @@ public class DishController {
     @PostMapping("/add")
     public String add(@RequestParam("dishPhoto") MultipartFile dishPhoto, @Valid @ModelAttribute("dishToAdd") Dish dishToAdd, BindingResult errors, Principal principal) throws IOException {
         String loggedUserUsername = principal.getName();
+        if (!dishPhoto.isEmpty()) {
+            if (!FileValidator.isImageExtensionCorrect(dishPhoto)) {
+                return "/dish/update/" + dishToAdd.getId();
+            }
+        }
 
-        if (errors.hasErrors() || !(!dishPhoto.isEmpty() && FileValidator.isImageExtensionCorrect(dishPhoto))) {
+        if (errors.hasErrors()) {
             return "/dish/add";
         }
 
@@ -82,9 +87,16 @@ public class DishController {
 
     @PostMapping("/update")
     public String update(@RequestParam("dishPhoto") MultipartFile dishPhoto, @Valid @ModelAttribute("dishToUpdate") Dish dishToUpdate, BindingResult errors, Principal principal) throws IOException {
-        if (errors.hasErrors() || !(!dishPhoto.isEmpty() && FileValidator.isImageExtensionCorrect(dishPhoto))) {
+        if (!dishPhoto.isEmpty()) {
+            if (!FileValidator.isImageExtensionCorrect(dishPhoto)) {
+                return "/dish/update/" + dishToUpdate.getId();
+            }
+        }
+
+        if (errors.hasErrors()) {
             return "/dish/update/" + dishToUpdate.getId();
         }
+
         dishService.save(dishToUpdate, dishPhoto);
         return "redirect:/user/profile/" + principal.getName();
     }

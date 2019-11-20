@@ -7,6 +7,6 @@ public class HouseNumberValidator implements ConstraintValidator<HouseNumber, St
 
     @Override
     public boolean isValid(String houseNumber, ConstraintValidatorContext context) {
-        return houseNumber.matches("\\d\\d[a-zA-Z]?");
+        return houseNumber.matches("\\d\\d?[a-zA-Z]?");
     }
 }

@@ -1,6 +1,7 @@
 package pl.portfolio.foodforhunger.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,6 @@ import pl.portfolio.foodforhunger.service.UserService;
 import pl.portfolio.foodforhunger.validator.FileValidator;
 import pl.portfolio.foodforhunger.validator.PasswordValidator;
 
-import javax.persistence.Table;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -56,11 +56,22 @@ public class UserController {
     public String update(Principal principal, @Valid @ModelAttribute("updateUserDTO") UpdateUserDTO updateUserDTO, @RequestParam("avatar") MultipartFile avatar, BindingResult errors) throws IOException {
         User loggedUser = userService.findByUsername(principal.getName());
 
-        if (!passwordValidator.isPasswordUpdateSuccessful(loggedUser, updateUserDTO, errors) || (!avatar.isEmpty() && !FileValidator.isImageExtensionCorrect(avatar))) {
+        if (!avatar.isEmpty()) {
+            if (!FileValidator.isImageExtensionCorrect(avatar)) {
+                return "/user/update";
+            }
+        }
+
+        if (!passwordValidator.isPasswordUpdateSuccessful(loggedUser, updateUserDTO, errors)) {
             return "/user/update";
         }
 
-        userService.update(loggedUser, updateUserDTO, avatar);
+        try {
+            userService.update(loggedUser, updateUserDTO, avatar);
+        } catch (DataIntegrityViolationException err) {
+            errors.rejectValue("email", "error.userToRegister", "Na ten email jest juz zarejestrowane konto!");
+            return "/user/update";
+        }
         return "redirect:/user/profile/" + principal.getName();
     }
 

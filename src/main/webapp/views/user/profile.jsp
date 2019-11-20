@@ -203,8 +203,8 @@
 </div>
 
 <%@ include file="../core/footer.jsp" %>
-<script src="../../js/profileDishPagination.js"></script>
-<script src="../../js/profileCommentPagination.js"></script>
+<script src="../../js/pagination/profileDishPagination.js"></script>
+<script src="../../js/pagination/profileCommentPagination.js"></script>
 
 <script src="../../js/commentCRUDModals.js"></script>
 

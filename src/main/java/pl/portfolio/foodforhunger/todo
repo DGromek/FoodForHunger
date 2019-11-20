@@ -1,9 +1,5 @@
-1. Use of Validators to validate (Username, Email @Unique, Password & RepeatedPassword, this whole mess when changing password, Comment author and receiver) <- Problems
 6. Filtering
 7. Confirm register by email.
-
-Bugs:
-1. Add error handling on uploading images.
 
 Far Future:
 1. Add messages system.

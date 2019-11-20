@@ -121,7 +121,7 @@
 </div>
 
 <%@ include file="../core/footer.jsp" %>
-<script src="../../js/dishBrowserPagination.js"></script>
+<script src="../../js/pagination/dishBrowserPagination.js"></script>
 
 </body>
 </html>
